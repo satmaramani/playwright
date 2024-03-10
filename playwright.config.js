@@ -40,10 +40,27 @@ const config = defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     // trace: "on-first-retry",
-    slowMo: 10000,
+    launchOptions: {
+      // slowMo: 500,
+    },
+    viewport: { width: 100, height: 100 },
     // offline: true,
   },
+  expect: {
+    // Maximum time expect() should wait for the condition to be met.
+    timeout: 100,
 
+    toHaveScreenshot: {
+      // An acceptable amount of pixels that could be different, unset by default.
+      maxDiffPixels: 10,
+    },
+
+    toMatchSnapshot: {
+      // An acceptable ratio of pixels that are different to the
+      // total amount of pixels, between 0 and 1.
+      maxDiffPixelRatio: 0.1,
+    },
+  },
   /* Configure projects for major browsers */
   projects: [
     {
@@ -59,7 +76,6 @@ const config = defineConfig({
         headless: true,
         artifactsDir: "ARTIFACTSDir",
         screenshots: "on",
-        slowMo: 5000,
         timeout: 50000,
         // video: "off",
       },

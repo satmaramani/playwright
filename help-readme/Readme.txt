@@ -39,10 +39,19 @@ npx playwright test --grep "@download" --project=chromium
 
 //for Debugging in powershell
     //Set the environment variable 
-    $env:PWDEBUG=1 
+    $env:PWDEBUG=1 Or npx playwright test --debug
 
     //Execute any command
     npx playwright test --grep --% "@addition" --headed --project=chromium
 
+
+
     It will halt the execution on browser debugger
- committing for checking workflow
+ 
+ //With trace mode on 
+ npx playwright test --grep --% "@slower" --headed --project=chromium --workers=1 --trace on
+
+//run as per text name presence
+    npx playwright test -g "calculations"
+
+npx playwright test -g "addition"
