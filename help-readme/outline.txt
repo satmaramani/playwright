@@ -70,7 +70,7 @@ Handling Pop-ups and Dialogs
 Working with Frames and Iframes
 Network Interception and Mocking
 Intercepting network requests
-Mocking responses
+*Mocking responses
  
 
 Mock Questions / Quiz for understanding

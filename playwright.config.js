@@ -61,75 +61,25 @@ const config = defineConfig({
       maxDiffPixelRatio: 0.1,
     },
   },
-  /* Configure projects for major browsers */
-  projects: [
-    {
-      name: "chromium",
-      use: { ...devices["Desktop Chrome"], acceptDownloads: true },
-      timeout: 10000,
-    },
-
-    {
-      name: "firefox",
-      use: {
-        ...devices["Desktop Firefox"],
-        headless: true,
-        artifactsDir: "ARTIFACTSDir",
-        screenshots: "on",
-        timeout: 50000,
-        // video: "off",
-      },
-    },
-
-    {
-      name: "webkit",
-      use: { ...devices["Desktop Safari"], headless: true },
-      timeout: 12000,
-    },
-
-    /* Test against mobile viewports. */
-    {
-      name: "MobileChrome",
-      use: { ...devices["Pixel 5"] },
-    },
-    {
-      name: "MobileChromeViewPort",
-      use: {
-        viewport: { width: 360, height: 640 },
-        // Add other browser options as needed
-      },
-    },
-    {
-      name: "MobileSafari",
-      use: { ...devices["iPhone 12"] },
-    },
-    {
-      name: "mutipleDevices",
-      use: [
-        { ...devices["Pixel 5"] },
-        { ...devices["iPhone 12"] },
-        { ...devices["Galaxy S20"] },
-        { ...devices["iPad Mini"] },
-        { ...devices["Nexus 7"] },
-        { ...devices["iPhone SE"] },
-        { ...devices["Nexus 7"] },
-      ],
-    },
-
-    /* Test against branded browsers. */
-    {
-      name: "MicrosoftEdge",
-      use: { ...devices["Desktop Edge"], channel: "msedge" },
-    },
-    {
-      name: "GoogleChrome",
-      use: { ...devices["Desktop Chrome"], channel: "chrome" },
-    },
-  ],
 });
 
 // Exporting projects array
 const projects = [
+  {
+    name: "smoke",
+    testMatch: /.*.spec.ts/,
+    retries: 0,
+  },
+  {
+    name: "prod",
+    testIgnore: /.*smoke.spec.ts/,
+    retries: 0,
+  },
+  {
+    name: "default",
+    testIgnore: /.*smoke.spec.ts/,
+    retries: 2,
+  },
   {
     name: "chromium",
     use: {
