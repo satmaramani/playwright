@@ -1,0 +1,49 @@
+Browser Type:
+
+Use a specific browser engine for the project.
+use: { browserName: 'chromium' }
+
+Browser Channel:
+
+Specify the browser channel (stable, beta, dev, or canary).
+use: { browserName: 'webkit', channel: 'canary' }
+
+Device Emulation:
+
+Emulate a specific device for mobile testing.
+use: { ...devices['iPhone 11'] }
+
+Viewport Size:
+
+Set a custom viewport size for the project.
+use: { viewport: { width: 1920, height: 1080 } }
+
+User Agent String:
+
+Specify a custom user agent string for the browser.
+use: { userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36' }
+
+Locale:
+
+Set the locale/language for the browser.
+use: { locale: 'en-US' }
+
+Permissions:
+
+Grant specific permissions to the browser context.
+use: { permissions: ['geolocation'] }
+
+Geolocation:
+
+Specify the geolocation coordinates for the browser context.
+use: { geolocation: { longitude: 10.0, latitude: 20.0 } }
+
+Color Scheme:
+
+Set the color scheme (light or dark) for the browser.
+use: { colorScheme: 'dark' }
+
+Timezone:
+
+Specify the timezone for the browser context.
+use: { timezone: 'America/New_York' }

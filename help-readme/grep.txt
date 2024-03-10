@@ -1,0 +1,41 @@
+npx playwright test --grep "Addition"
+
+npx playwright test --grep "calculations.spec.js"
+
+
+Basic Usage: You can use --grep followed by a string to match against the descriptions or names of tests.
+
+Example: --grep "login"
+
+Regular Expressions: You can use regular expressions to match test descriptions or names.
+
+Example: --grep "/login|signup/"
+
+Case Insensitive Match: Use the i flag after the regular expression to perform a case-insensitive match.
+
+Example: --grep "/login|signup/i"
+
+Negation: Use ! to negate the match, meaning tests that don't match the pattern will be executed.
+
+Example: --grep "!login"
+
+Matching Test Files: You can also use --grep to match test filenames.
+
+Example: --grep "login.spec"
+
+Matching Entire Test Path: Match the entire test file path.
+
+Example: --grep "/path/to/test/login.spec"
+
+Matching Entire Test Path and Test Name: Match both the test file path and the test name.
+
+Example: --grep "/path/to/test/login.spec::testLogin"
+
+Excluding Specific Tests: Use ! to exclude specific tests from being executed.
+
+Example: --grep "!login" --grep "signup"
+
+Combining Multiple Patterns: You can combine multiple --grep options to filter tests based on multiple patterns.
+
+Example: --grep "login" --grep "signup"
+

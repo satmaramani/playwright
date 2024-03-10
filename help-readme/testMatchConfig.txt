@@ -1,0 +1,11 @@
+  // Define the testMatch pattern to match test files
+  testMatch: '**/*.spec.js', // Match all files ending with .spec.js
+
+  // Optionally, you can specify an array of patterns to match multiple file types
+  // testMatch: ['**/*.test.js', '**/*.spec.js'],
+
+  // You can also use specific paths or exclude certain files or directories
+  // testMatch: ['tests/**/*.js', '!**/node_modules/**'],
+
+  // You can provide multiple patterns as well
+  // testMatch: ['tests/**/*.spec.js', 'src/**/*.test.js'],

@@ -1,0 +1,37 @@
+In Playwright, the permissions setting allows you to specify a list of permissions to grant or deny to the browser context. These permissions control the access to various APIs and resources, such as geolocation, camera, microphone, notifications, etc. Here are some common permissions that you can configure in Playwright:
+
+geolocation: Grants or denies access to the Geolocation API.
+notifications: Grants or denies the ability to display notifications.
+midi: Grants or denies access to MIDI devices.
+midiSysex: Grants or denies access to MIDI devices for sending and receiving system exclusive messages.
+push: Grants or denies the ability to display push notifications.
+camera: Grants or denies access to the camera.
+microphone: Grants or denies access to the microphone.
+backgroundSync: Grants or denies access to background sync functionality.
+ambientLightSensor: Grants or denies access to the ambient light sensor.
+accelerometer: Grants or denies access to the accelerometer.
+gyroscope: Grants or denies access to the gyroscope.
+magnetometer: Grants or denies access to the magnetometer.
+clipboardReadWrite: Grants or denies access to read and write from the clipboard.
+Here's an example of how you can configure permissions in your Playwright configuration:
+
+
+// playwright.config.js
+
+module.exports = {
+  // Other configurations...
+  projects: [
+    {
+      name: 'Test with Permissions',
+      use: {
+        permissions: {
+          geolocation: 'granted',
+          notifications: 'denied',
+          camera: 'prompt',
+          microphone: 'prompt',
+        },
+      },
+    },
+    // Add more projects as needed
+  ],
+};

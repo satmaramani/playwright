@@ -1,0 +1,20 @@
+In Playwright, the storageState option allows you to capture and restore the state of browser storage such as cookies, local storage, and session storage. This can be useful for scenarios where you want to persist user authentication or other settings across multiple test runs or browser sessions.
+
+Here's how you can use storageState in Playwright:
+
+  // Capture the current state of browser storage
+  const storageState = await context.storageState();
+
+  // Close the browser
+  await browser.close();
+
+  // Later, you can launch a new browser instance and restore the storage state
+  const browser2 = await chromium.launch();
+  const context2 = await browser2.newContext();
+  await context2.addCookies(storageState.cookies); // Restore cookies
+  await context2.storageState(storageState); // Restore other storage state
+
+  // Now you can continue testing with the restored storage state
+  const page2 = await context2.newPage();
+  await page2.goto('https://example.com');
+  // Verify that the previous state is restored

@@ -1,0 +1,13 @@
+In Playwright, contextOptions are configurations that you can pass when creating a browser context. These options allow you to customize the behavior of the browser context according to your requirements. Here are some commonly used contextOptions:
+
+recordVideo (RecordVideoOptions): Records a video of the browser's execution.
+recordHar (RecordHarOptions): Records a HAR (HTTP Archive) file of network traffic.
+viewport (ViewportSize): Specifies the initial browser viewport size.
+userAgent (string): Specifies the user agent string to use for the browser context.
+locale (string): Specifies the locale to use for the browser context.
+timezoneId (string): Specifies the timezone to use for the browser context.
+permissions (string[]): Specifies the list of permissions to grant for the browser context.
+geolocation (GeolocationOptions): Specifies the geolocation coordinates to use for the browser context.
+httpCredentials (HTTPCredentials): Specifies HTTP credentials to use for the browser context.
+deviceScaleFactor (number): Specifies the device scale factor to use for the browser context.
+isMobile (boolean): Specifies whether the browser context should emulate a mobile device.

@@ -1,0 +1,17 @@
+In Playwright, the recordHar option allows you to record HTTP Archive (HAR) files during test execution. HAR files capture detailed information about network requests and responses made by the browser, including headers, cookies, timings, and more. This feature is useful for analyzing network activity and performance issues during test runs.
+
+Here's how you can configure recordHar in your Playwright configuration:
+
+// playwright.config.js
+
+module.exports = {  
+// Other configurations...
+use: {
+recordHar: { path: 'path/to/save/har/file.har' },
+},
+};
+In the above example, we specify the recordHar option with a path property that defines the location where the HAR file will be saved. You can specify any desired file path and filename for the HAR file.
+
+During test execution, Playwright will automatically record network activity and save it to the specified HAR file. You can then analyze the HAR file using various tools to inspect network requests, response times, and other details.
+
+Keep in mind that enabling recordHar may impact test performance and increase disk space usage, especially for long test runs or tests with heavy network traffic.

@@ -1,0 +1,54 @@
+// Set the timeout for each test case (in milliseconds)
+  timeout: 30000, // 30 seconds
+
+  // Optionally, you can set different timeout values for different test files or projects
+  // projects: [
+  //   {
+  //     name: 'chromium',
+  //     use: { ... },
+  //     timeout: 60000, // 60 seconds for Chromium project
+  //   },
+  //   {
+  //     name: 'firefox',
+  //     use: { ... },
+  //     timeout: 40000, // 40 seconds for Firefox project
+  //   },
+  // ],
+
+  // Optionally, you can set a timeout for the entire test run (in milliseconds)
+  // globalTimeout: 60000, // 60 seconds
+
+  // Optionally, you can specify a timeout for before each and after each hooks
+  // beforeEachTimeout: 5000, // 5 seconds
+  // afterEachTimeout: 5000, // 5 seconds
+
+
+  timeout: Timeout for each individual test case. This setting specifies the maximum time allowed for each test case to complete. If a test case exceeds this timeout, it will be considered failed due to timeout.
+
+pageTimeout: Timeout for each page action. This setting specifies the maximum time allowed for each page action (such as navigation, click, fill, etc.) to complete. If a page action exceeds this timeout, it will be considered failed due to timeout.
+
+contextOptions.timeout: Timeout for each browser context. This setting specifies the maximum time allowed for each browser context to be created. If the creation of a browser context exceeds this timeout, it will be considered failed due to timeout.
+
+defaultBrowserOptions.timeout: Timeout for browser launch. This setting specifies the maximum time allowed for the browser to be launched. If the browser launch exceeds this timeout, it will be considered failed due to timeout.
+
+defaultBrowserOptions.argsTimeout: Timeout for browser arguments. This setting specifies the maximum time allowed for passing arguments to the browser process. If passing arguments to the browser process exceeds this timeout, it will be considered failed due to timeout.
+
+
+
+// Timeout for each individual test case (in milliseconds)
+  timeout: 30000, // 30 seconds
+
+  // Timeout for each page action (in milliseconds)
+  pageTimeout: 10000, // 10 seconds
+
+  // Timeout for each browser context (in milliseconds)
+  contextOptions: {
+    timeout: 20000, // 20 seconds
+  },
+
+  // Timeout for browser launch (in milliseconds)
+  defaultBrowserOptions: {
+    timeout: 30000, // 30 seconds
+    argsTimeout: 10000, // 10 seconds for passing browser arguments
+  },
+  

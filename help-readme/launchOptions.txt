@@ -1,0 +1,11 @@
+In Playwright, the launchOptions are configurations that you can pass when launching a browser instance. These options allow you to customize the behavior of the browser according to your requirements. Here are some commonly used launchOptions:
+
+headless (boolean): Whether to run the browser in headless mode (true for headless, false for headed).
+slowMo (number): Slows down Playwright operations by the specified amount of milliseconds. This is useful for debugging and observing the test execution.
+args (string[]): Additional command-line arguments to pass to the browser instance.
+executablePath (string): Path to the browser executable to use instead of the bundled one.
+ignoreHTTPSErrors (boolean): Whether to ignore HTTPS errors during navigation.
+viewport (ViewportSize): Specifies the initial browser viewport size.
+defaultViewport (ViewportSize): Specifies the default viewport size when the browser window is first opened.
+userDataDir (string): Path to a user data directory to use for the browser instance.
+channel (string): Channel to use for the browser instance (e.g., "chrome", "firefox", "webkit").

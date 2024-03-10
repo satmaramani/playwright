@@ -1,0 +1,52 @@
+In Playwright, the trace option allows you to enable tracing for various events and actions during test execution. Here are all possible combinations of the trace option:
+
+No Tracing:
+
+Disable tracing.
+
+trace: 'none'
+Capture First:
+
+Capture the trace only for the first test run.
+
+trace: 'on-first-run'
+Capture First Retry:
+
+Capture the trace only for the first test run and any subsequent retries.
+
+trace: 'on-first-retry'
+Capture All Retries:
+
+Capture the trace for all test runs, including retries.
+
+trace: 'on-all-retries'
+Capture All:
+
+Capture the trace for all test runs, including retries and successful runs.
+
+trace: 'on-all'
+Capture All No Screenshots:
+
+Capture the trace for all test runs, excluding screenshots.
+
+trace: 'on-all-no-screenshots'
+Capture All With Screenshots:
+
+Capture the trace for all test runs, including screenshots.
+
+trace: 'on-all-with-screenshots'
+Capture No Assets:
+
+Capture the trace for all test runs, excluding resources like screenshots and videos.
+
+trace: 'on-all-no-assets'
+Capture All With Assets:
+
+Capture the trace for all test runs, including resources like screenshots and videos.
+
+trace: 'on-all-with-assets'
+Capture All With Screenshots And No Assets:
+
+Capture the trace for all test runs, including screenshots but excluding other assets.
+
+trace: 'on-all-with-screenshots-no-assets'
