@@ -112,9 +112,9 @@ module.exports = defineConfig({
   ],
 
   /* Run your local dev server before starting the tests */
-  webServer: {
-    command: "cd D:/node-sample-project && nodemon server.js",
-    url: "http://127.0.0.1:9090",
-    reuseExistingServer: !process.env.CI,
-  },
+  // webServer: {
+  //   command: "cd D:/node-sample-project && nodemon server.js",
+  //   url: "http://127.0.0.1:9090",
+  //   reuseExistingServer: !process.env.CI,
+  // },
 });
