@@ -11,7 +11,7 @@ const { off } = require("process");
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
-module.exports = defineConfig({
+const config = defineConfig({
   globalTeardown: "./SamTeardown.js",
   globalSetup: "./samGlobalSetup.js",
   testMatch: ["**/*.test.js", "**/*.spec.js"],
@@ -110,11 +110,48 @@ module.exports = defineConfig({
       use: { ...devices["Desktop Chrome"], channel: "chrome" },
     },
   ],
-
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: "cd D:/node-sample-project && nodemon server.js",
-  //   url: "http://127.0.0.1:9090",
-  //   reuseExistingServer: !process.env.CI,
-  // },
 });
+
+// Exporting projects array
+const projects = [
+  {
+    name: "chromium",
+    use: {
+      browserName: "chromium",
+      // Add other browser options or settings specific to Chromium
+    },
+  },
+  {
+    name: "firefox",
+    use: {
+      browserName: "firefox",
+      // Add other browser options or settings specific to Firefox
+    },
+  },
+  {
+    name: "webkit",
+    use: {
+      browserName: "webkit",
+      // Add other browser options or settings specific to WebKit
+    },
+  },
+];
+
+let webServerConfig;
+
+// Exporting web server configuration
+if (!process.env.CI) {
+  webServerConfig = {
+    webServer: {
+      command: "cd D:/node-sample-project && nodemon server.js",
+      url: "http://127.0.0.1:9090",
+      reuseExistingServer: !process.env.CI,
+    },
+  };
+}
+
+module.exports = {
+  config,
+  projects,
+  ...webServerConfig, // Spread the web server configuration into the exports object
+};
