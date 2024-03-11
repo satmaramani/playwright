@@ -2,7 +2,7 @@ const { test, expect } = require("@playwright/test");
 
 test("Verify calculator operations in iframe @iframe", async ({ page }) => {
   // Navigate to the parent page containing the iframe
-  await page.goto("http://127.0.0.1:5500/public/frames/frames.html");
+  await page.goto("http://locahost:9090/frames/frames.html");
 
   // Access the iframe element
   const iframeElement2 = await page.$("#iframe2");
@@ -32,7 +32,7 @@ test("Verify Drag and drop operations in iframe 2 @iframe", async ({
   page,
 }) => {
   // Navigate to the parent page containing the iframe
-  await page.goto("http://127.0.0.1:5500/public/frames/frames.html");
+  await page.goto("http://locahost:9090/frames/frames.html");
 
   // Access the iframe element
   const iframeElement1 = await page.$("#iframe1");
