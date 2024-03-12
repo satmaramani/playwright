@@ -36,7 +36,7 @@ test.describe(
         ],
       },
       async ({ page }) => {
-        // ...
+        page.getByAttribute();
       }
     );
   }

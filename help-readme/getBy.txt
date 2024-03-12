@@ -1,0 +1,15 @@
+getByRole: Finds an element based on its role attribute, such as "button" or "link".
+getByText: Finds an element containing the specified text.
+getByPlaceholderText: Finds an input element by its placeholder attribute.
+getByLabelText: Finds an element by its associated label text.
+getByTestId: Finds an element by its data-testid attribute.
+getByTitle: Finds an element by its title attribute.
+getByAltText: Finds an element by its alt attribute, commonly used for images.
+getBySelector: Finds an element using a CSS selector.
+
+getById: Finds an element by its ID attribute.
+getByClassName: Finds an element by its class name.
+getByTagName: Finds an element by its tag name.
+getByXPath: Finds an element using an XPath expression.
+getByAttribute: Finds an element by any of its attributes.
+getByAltText: Finds an element by its alt attribute, commonly used for images.
