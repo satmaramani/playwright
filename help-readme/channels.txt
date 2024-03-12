@@ -13,4 +13,6 @@ WebKit:
 
 Stable
 Technology Preview
-Each channel provides a different level of stability and access to new features. It's essential to test your application across multiple channels to ensure compatibility and stability across various browser versions.
+Each channel provides a different level of stability and access to new features. 
+It's essential to test your application across multiple channels to ensure compatibility and 
+stability across various browser versions.
