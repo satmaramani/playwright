@@ -19,20 +19,24 @@ test("Go back and go Forward @goback", async () => {
   await page.goto("http://localhost:9090/traversal/page4.html");
 
   await page.waitForTimeout(2000);
-  console.log("Go back to page3.html");
+  console.log(` now I am at ${page.url()} =>  Go back to page3.html`);
+
   await page.goBack();
 
   await page.waitForTimeout(2000);
 
-  console.log("Go back to page2.html");
+  console.log(` now I am at ${page.url()} => Go back to page2.html`);
+
   await page.goBack();
 
   await page.waitForTimeout(2000);
 
-  console.log("Go forward to page3.html");
+  console.log(` now I am at ${page.url()} => Go forward to page3.html`);
+
   await page.goForward();
 
-  console.log("Go forward to page4.html");
+  console.log(` now I am at ${page.url()} => Go forward to page4.html`);
+
   await page.goForward();
 
   await page.waitForTimeout(2000);

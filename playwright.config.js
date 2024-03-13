@@ -12,6 +12,7 @@ const { off } = require("process");
  * @see https://playwright.dev/docs/test-configuration
  */
 const config = defineConfig({
+  quiet: true,
   globalTeardown: "./SamTeardown.js",
   globalSetup: "./samGlobalSetup.js",
   testMatch: ["**/*.test.js", "**/*.spec.js"],
