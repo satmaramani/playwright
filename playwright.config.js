@@ -105,19 +105,27 @@ const projects = [
 
 let webServerConfig;
 
-// Exporting web server configuration
-if (!process.env.CI) {
-  webServerConfig = {
-    webServer: {
-      command: "cd D:/node-sample-project && nodemon server.js",
-      url: "http://127.0.0.1:9090",
-      reuseExistingServer: !process.env.CI,
-    },
-  };
-}
+// if (!process.env.CI) {
+//   webServerConfig = {
+//     webServer: {
+//       name: "Frontend",
+//       command:
+//         "cd D:/playwright-samples/node-sample-project && nodemon server.js",
+//       url: "http://127.0.0.1:9090/node-sample-project/",
+//       reuseExistingServer: !process.env.CI,
+//     },
+//     backendServer: {
+//       name: "Backend server",
+//       command:
+//         "cd D:/playwright-samples/playwright-authentication && nodemon server.js",
+//       url: "http://127.0.0.1:9091",
+//       reuseExistingServer: !process.env.CI,
+//     },
+//   };
+// }
 
 module.exports = {
   config,
   projects,
-  ...webServerConfig, // Spread the web server configuration into the exports object
+  // ...webServerConfig, // Spread the web server configuration into the exports object
 };

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mouse and Keyboard Events</title>
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  button {
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  #eventDisplay {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 300px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <button id="singleClickBtn">Single Click</button>
+  <button id="doubleClickBtn">Double Click</button>
+  <button id="mouseOverBtn">Mouse Over</button>
+  <button id="mouseOutBtn">Mouse Out</button>
+  <input type="text" id="textInput" placeholder="Type here">
+  <textarea id="textAreaInput" placeholder="Type here"></textarea>
+  <div id="eventDisplay">Events will be displayed here</div>
+</div>
+
+<script>
+  const eventDisplay = document.getElementById('eventDisplay');
+
+  function displayEvent(eventText) {
+    eventDisplay.innerText = eventText;
+  }
+
+  const singleClickBtn = document.getElementById('singleClickBtn');
+  const doubleClickBtn = document.getElementById('doubleClickBtn');
+  const mouseOverBtn = document.getElementById('mouseOverBtn');
+  const mouseOutBtn = document.getElementById('mouseOutBtn');
+  const textInput = document.getElementById('textInput');
+  const textAreaInput = document.getElementById('textAreaInput');
+
+  singleClickBtn.addEventListener('click', () => {
+    displayEvent('Button is single clicked');
+  });
+
+  doubleClickBtn.addEventListener('dblclick', () => {
+    displayEvent('Button is double clicked');
+  });
+
+  mouseOverBtn.addEventListener('mouseover', () => {
+    displayEvent('Mouse over button');
+  });
+
+  mouseOutBtn.addEventListener('mouseout', () => {
+    displayEvent('Mouse out of button');
+  });
+
+  textInput.addEventListener('keydown', (event) => {
+    displayEvent('Key down event: ' + event.key);
+  });
+
+  textAreaInput.addEventListener('keyup', (event) => {
+    displayEvent('Key up event: ' + event.key);
+  });
+</script>
+
+</body>
+</html>

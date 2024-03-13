@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab Navigation</title>
+    <style>
+        /* Center align container */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Tab navigation styles */
+        .tab-container {
+            width: 80%;
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .tab-navigation {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+        }
+
+        .tab-item {
+            padding: 10px 20px;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .tab-item:hover {
+            background-color: #555;
+            cursor: pointer;
+        }
+
+        .tab-content {
+            padding: 20px;
+            display: none;
+            color: #333; /* Default text color */
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Different tab colors */
+        .tab-1 {
+            background-color: #4CAF50;
+        }
+
+        .tab-2 {
+            background-color: #2196F3;
+        }
+
+        .tab-3 {
+            background-color: #f44336;
+        }
+
+        .tab-4 {
+            background-color: #FF9800;
+        }
+
+        /* Text colors for tab content */
+        .tab-content.tab-1 {
+            color: #fff; /* White text color for Tab 1 */
+        }
+
+        .tab-content.tab-2 {
+            color: #fff; /* White text color for Tab 2 */
+        }
+
+        .tab-content.tab-3 {
+            color: #fff; /* White text color for Tab 3 */
+        }
+
+        .tab-content.tab-4 {
+            color: #333; /* Default text color for Tab 4 */
+        }
+    </style>
+</head>
+<body>
+    <div class="tab-container">
+        <div ><h2>The Tabs game</h2></div>
+        <div class="tab-navigation">
+            <div class="tab-item tab-1" onclick="showTab(1)">Tab 1</div>
+            <div class="tab-item tab-2" onclick="showTab(2)">Tab 2</div>
+            <div class="tab-item tab-3" onclick="showTab(3)">Tab 3</div>
+            <div class="tab-item tab-4" onclick="showTab(4)">Tab 4</div>
+        </div>
+        <div id="tabContent1" class="tab-content tab-1 active">Content for Tab 1</div>
+        <div id="tabContent2" class="tab-content tab-2">Content for Tab 2</div>
+        <div id="tabContent3" class="tab-content tab-3">Content for Tab 3</div>
+        <div id="tabContent4" class="tab-content tab-4">Content for Tab 4</div>
+    </div>
+
+    <script>
+        function showTab(tabNumber) {
+            // Hide all tab contents
+            var tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(function(tabContent) {
+                tabContent.classList.remove('active');
+            });
+
+            // Show selected tab content
+            var selectedTabContent = document.getElementById('tabContent' + tabNumber);
+            selectedTabContent.classList.add('active');
+        }
+    </script>
+</body>
+</html>

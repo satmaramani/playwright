@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List Uploader and Downloader</title>
+</head>
+<body>
+    <h1>Employee List Uploader and Downloader</h1>
+
+    <!-- Uploader -->
+    <h2>Upload Employee List</h2>
+    <input type="file" id="fileInput">
+    <button onclick="uploadFile()">Upload</button>
+
+    <!-- Display Uploaded Content -->
+    <div id="uploadedContent">
+        <h2>Uploaded Employee List</h2>
+        <textarea id="employeeList" rows="10" cols="50"></textarea>
+        <button onclick="downloadFile()">Download</button>
+    </div>
+
+    <script>
+        function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const uploadedContent = document.getElementById('uploadedContent');
+            const employeeListTextarea = document.getElementById('employeeList');
+
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+                const contents = event.target.result;
+                employeeListTextarea.value = contents;
+                uploadedContent.style.display = 'block';
+            };
+
+            reader.readAsText(file);
+        }
+
+        function downloadFile() {
+            const employeeListTextarea = document.getElementById('employeeList');
+            const contents = employeeListTextarea.value;
+            const blob = new Blob([contents], { type: 'text/plain' });
+
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'employee_list.txt';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

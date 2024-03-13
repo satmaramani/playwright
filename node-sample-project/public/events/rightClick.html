@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Right Click Event Example</title>
+  <style>
+    body {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      color: white;
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  Right-click anywhere on this page to change the background color.
+  <script>
+    document.addEventListener('contextmenu', function(event) {
+      event.preventDefault();
+      document.body.style.backgroundColor = 'green';
+      document.body.innerText = 'Background color changed to green. Left-click again to revert.';
+    });
+
+    document.addEventListener('click', function(event) {
+      if (event.button === 0) { // Left click
+        document.body.style.backgroundColor = 'blue';
+        document.body.innerText = 'Left Click Detected: - Now you can Right-click anywhere on this page to change the background color.';
+      }
+    });
+  </script>
+</body>
+</html>

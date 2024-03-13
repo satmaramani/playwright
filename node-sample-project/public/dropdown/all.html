@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Display</title>
+    <style>
+        /* Center align container */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Dropdown display styles */
+        .dropdown-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .dropdown {
+            margin-bottom: 20px;
+        }
+
+        .display-area {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* Different dropdown colors */
+        .dropdown-option-1 {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        .dropdown-option-2 {
+            background-color: #2196F3;
+            color: #fff;
+        }
+
+        .dropdown-option-3 {
+            background-color: #f44336;
+            color: #fff;
+        }
+
+        .dropdown-option-4 {
+            background-color: #FF9800;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="dropdown-container">
+        <select id="dropdown" class="dropdown" onchange="updateDisplay()">
+            <option value="option0" class="dropdown-option-0">Select at least one</option>
+            <option value="option1" class="dropdown-option-1">Option 1</option>
+            <option value="option2" class="dropdown-option-2">Option 2</option>
+            <option value="option3" class="dropdown-option-3">Option 3</option>
+            <option value="option4" class="dropdown-option-4">Option 4</option>
+        </select>
+        <div id="displayArea" class="display-area">Selected option text will appear here</div>
+    </div>
+
+    <script>
+        function updateDisplay() {
+            var dropdown = document.getElementById("dropdown");
+            var displayArea = document.getElementById("displayArea");
+            var selectedOption = dropdown.options[dropdown.selectedIndex];
+            displayArea.textContent = selectedOption.textContent;
+            displayArea.className = "display-area " + selectedOption.className;
+        }
+    </script>
+</body>
+</html>

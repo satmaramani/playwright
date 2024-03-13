@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Example</title>
+    <style>
+        #dragElement {
+            width: 100px;
+            height: 100px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+            cursor: pointer;
+        }
+        #dropTarget {
+            width: 200px;
+            height: 200px;
+            border: 2px dashed #007bff;
+        }
+        #resetButton {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="dragElement" draggable="true">Drag me!</div>
+    <div id="dropTarget">Drop here!</div>
+    <button id="resetButton">Reset</button>
+
+    <script>
+        const dragElement = document.getElementById('dragElement');
+        const dropTarget = document.getElementById('dropTarget');
+        const resetButton = document.getElementById('resetButton');
+
+        dragElement.addEventListener('dragstart', (event) => {
+            event.dataTransfer.setData('text/plain', 'Dragged element');
+        });
+
+        dropTarget.addEventListener('dragover', (event) => {
+            event.preventDefault();
+        });
+
+        dropTarget.addEventListener('drop', (event) => {
+            event.preventDefault();
+            const data = event.dataTransfer.getData('text/plain');
+            event.target.textContent = data;
+            event.target.style.backgroundColor = 'green';
+        });
+
+        resetButton.addEventListener('click', () => {
+            dropTarget.textContent = 'Drop here!';
+            dropTarget.style.backgroundColor = '';
+        });
+    </script>
+</body>
+</html>

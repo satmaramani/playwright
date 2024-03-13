@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop-up Elements</title>
+    <style>
+        /* Styles for modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Styles for notification box */
+        .notification {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            background-color: #f44336; /* Red */
+            color: white;
+            padding: 15px;
+            border-radius: 10px 0 0 0;
+        }
+
+        /* Styles for lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .lightbox-content img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Styles for dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Styles for tooltip */
+        .tooltip {
+            position: absolute;
+            z-index: 1;
+            background-color: #555;
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        .dialog {
+            position: absolute;
+            z-index: 1;
+            background-color: #555;
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>This is a modal.</p>
+        </div>
+    </div>
+
+    <!-- Notification box -->
+    <div id="myNotification" class="notification">
+        <p>This is a notification box.</p>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="myLightbox" class="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-content">
+            <img src="/public/images/sam.jpg" alt="Image">
+        </div>
+    </div>
+
+    <!-- Dropdown -->
+    <div class="dropdown">
+        <button onclick="showDropdown()" class="dropbtn">Dropdown</button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="#">Option 1</a>
+            <a href="#">Option 2</a>
+            <a href="#">Option 3</a>
+        </div>
+    </div>
+
+    <!-- Tooltip -->
+    <div id="tooltip" class="tooltip"></div>
+    <div id="dialog" class="dialog"> This is a dialog</div>
+
+    <script>
+        // Open Modal
+        function openModal() {
+            document.getElementById('myModal').style.display = "block";
+        }
+
+        
+        // Close Modal
+        function closeModal() {
+            document.getElementById('myModal').style.display = "none";
+        }
+
+        // Show Notification
+        function showNotification() {
+            document.getElementById('myNotification').style.display = "block";
+            setTimeout(function(){
+                document.getElementById('myNotification').style.display = "none";
+            }, 3000); // Hide after 3 seconds
+        }
+
+        // Open Lightbox
+        function openLightbox() {
+            document.getElementById('myLightbox').style.display = "block";
+        }
+
+        // Close Lightbox
+        function closeLightbox() {
+            document.getElementById('myLightbox').style.display = "none";
+        }
+
+        // Show Dropdown
+        function showDropdown() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Show Tooltip
+        function showTooltip(event) {
+            var tooltip = document.getElementById("tooltip");
+            tooltip.innerHTML = "This is a tooltip";
+            tooltip.style.top = (event.clientY + 10) + "px";
+            tooltip.style.left = (event.clientX + 10) + "px";
+            tooltip.style.display = "block";
+        }
+
+
+        // Hide Tooltip
+        function hideTooltip() {
+            document.getElementById("tooltip").style.display = "none";
+        }
+
+        function showDialog(event) {
+            var dialog = document.getElementById("dialog");
+            dialog.innerHTML = "This is a Dialog box by Sam";
+            dialog.style.top = "200px";
+            dialog.style.left = "200px";
+            dialog.style.display = "block";
+        }
+        
+
+        // Hide Tooltip
+        function hideDialog() {
+            document.getElementById("dialog").style.display = "none";
+        }
+    </script>
+
+    <!-- Modal -->
+    <button onclick="openModal()">Open Modal</button>
+
+    <!-- Notification box -->
+    <button onclick="showNotification()">Show Notification</button>
+
+    <!-- Lightbox -->
+    <button onclick="openLightbox()">Open Lightbox</button>
+
+    <!-- Tooltip -->
+    <button onmousemove="showTooltip(event)" onmouseleave="hideTooltip()">Hover for Tooltip</button>
+
+    <!-- Dialog -->
+    <button onmouseleave="hideDialog(event)" onclick="showDialog()">Show Dialog Box</button>
+
+</body>
+</html>

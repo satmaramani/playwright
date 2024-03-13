@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page for Dialog Dismiss</title>
+    <script>
+        function CopyContents()
+        {
+            alert("This is dialog box, please dismiss through Playwright !!")
+            var contents = document.getElementById("textbox").value;
+            document.getElementById("placeholderSpan").innerText = contents;
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="textbox" placeholder="Enter something">
+    <button id="submit" onclick="CopyContents()">Submit</button> <br />
+
+    <span id="placeholderSpan"></span>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Source Page</title>
+</head>
+<body>
+    <h1>Source Page</h1>
+    <p>This page will open the target HTML page in various environments.</p>
+    <button onclick="openInTab()">Open in Tab</button>
+    <button onclick="openInWindow()">Open in Window</button>
+    <button onclick="openInIncognito()">Open in Incognito</button>
+
+    <script>
+        function openInTab() {
+            window.open('targetPage.html', '_blank');
+        }
+
+        function openInWindow() {
+            window.open('targetPage.html', '_blank', 'width=600,height=400');
+        }
+
+        function openInIncognito() {
+            window.open('targetPage.html', '_blank', 'width=600,height=400,incognito=yes');
+        }
+    </script>
+</body>
+</html>

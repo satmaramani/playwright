@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information Form</title>
+    <style>
+        /* Center align container */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Form container styles */
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        /* Form input styles */
+        .form-input {
+            margin-bottom: 15px;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        /* Submit button styles */
+        .submit-button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .reset-button {
+            background-color: #af4c74;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Display area styles */
+        .display-area {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        /* Different color for display area */
+        .display-area-content {
+            background-color: #f44336;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>User Information Form</h1>
+        <form id="userInfoForm">
+            <input type="text" id="firstName" class="form-input" placeholder="First Name" required><br>
+            <input type="text" id="lastName" class="form-input" placeholder="Last Name" required><br>
+            <select id="gender" class="form-input">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select><br>
+            <input type="text" id="companyName" class="form-input" placeholder="Company Name"><br>
+            <select id="ageGroup" class="form-input">
+                <option value="under20">Under 20</option>
+                <option value="20to30">20 to 30</option>
+                <option value="31to40">31 to 40</option>
+                <option value="above40">Above 40</option>
+            </select><br>
+            <textarea id="description" class="form-input" placeholder="Description"></textarea><br>
+            <label><h2><b>Food Preference</b></h2></label>
+            <div id="foodPreferences" class="form-input">
+                <input type="checkbox" id="pizza" value="Pizza">
+                <label for="pizza">Pizza</label><br>
+                <input type="checkbox" id="burger" value="Burger">
+                <label for="burger">Burger</label><br>
+                <input type="checkbox" id="pasta" value="Pasta">
+                <label for="pasta">Pasta</label><br>
+                <input type="checkbox" id="sushi" value="Sushi">
+                <label for="sushi">Sushi</label><br>
+            </div>
+            <h3>City Preference:</h3>
+            <div id="cityPreference" class="form-input">
+                <input type="radio" id="pune" name="city" value="Pune">
+                <label for="pune">Pune</label><br>
+                <input type="radio" id="mumbai" name="city" value="Mumbai">
+                <label for="mumbai">Mumbai</label><br>
+                <input type="radio" id="otherCity" name="city" value="Other">
+                <label for="otherCity">Other</label><br>
+            </div>
+            <button type="button" onclick="submitForm()" class="submit-button">Submit</button>
+            <button type="button" onclick="resetForm()" class="reset-button">Reset</button>
+        </form>
+        <div id="displayArea" class="display-area"></div>
+    </div>
+
+    <script>
+        function resetForm(){
+            window.location.reload();
+        }
+        function submitForm() {
+
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var gender = document.getElementById("gender").value;
+            var companyName = document.getElementById("companyName").value;
+            var ageGroup = document.getElementById("ageGroup").value;
+            var description = document.getElementById("description").value;
+            var foodPreferences = Array.from(document.querySelectorAll("#foodPreferences input[type=checkbox]:checked"))
+                .map(checkbox => checkbox.value);
+            var cityPreference = document.querySelector("#cityPreference input[type=radio]:checked").value;
+            
+            var displayArea = document.getElementById("displayArea");
+            displayArea.innerHTML = `
+                <div class="display-area-content">
+                    <h2>Entered Information</h2>
+                    <p><strong>First Name:</strong><span id='outputFirstname'> ${firstName}</span></p>
+                    <p><strong>Last Name:</strong> <span id='outputLastname'>${lastName}</span></p>
+                    <p><strong>Gender:</strong> <span id='outputGender'>${gender}</span></p>
+                    <p><strong>Company Name:</strong> <span id='outputCompany'>${companyName}</span></p>
+                    <p><strong>Age Group:</strong> <span id='outputAge'>${ageGroup}</span></p>
+                    <p><strong>Description:</strong> <span id='outputDesc'>${description}</span></p>
+                    <p><strong>Food Preferences:</strong> <span id='outputFood'>${foodPreferences.join(", ")}</span></p>
+                    <p><strong>City Preference:</strong> <span id='outputCity'>${cityPreference}</span></p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
