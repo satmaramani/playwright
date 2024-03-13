@@ -1,7 +1,8 @@
 name: Playwright Tests by Sam
 on:
-  push:
-    branches: [ main, master ]
+  workflow_dispatch:
+  #push:
+    #branches: [ main, master ]
 jobs:
   test:
     timeout-minutes: 60
