@@ -22,6 +22,21 @@ test.describe("Login Page @login", () => {
     context.token = token;
   });
 
+  test("Wrong Credentials", async ({ page, context }) => {
+    await page.fill("#username", "user1234");
+    await page.fill("#password", "password1");
+    await page.click('button[type="submit"]');
+    await page.waitForTimeout(2000);
+    await expect(page).toHaveURL(
+      "http://localhost:9090/loginScenario/login.html"
+    );
+    const token = await page.evaluate(() => localStorage.getItem("token"));
+    expect(token).toBeNull();
+
+    // Store token in context to use in subsequent requests
+    context.token = token;
+  });
+
   test("Restricted page access with valid token", async ({ page, context }) => {
     const token = context.token;
     const response = await page.goto("http://localhost:9091/restricted1", {
@@ -53,5 +68,27 @@ test.describe("Login Page @login", () => {
 
     // Check if the response contains the error message when token is not provided
     expect(responseBody.error).toBe("Token not provided");
+  });
+
+  test("Restricted page access with token using fetch method @loginApi", async ({
+    page,
+    context,
+  }) => {
+    const token = context.token;
+
+    const response = await page.evaluate(async (token) => {
+      const url = "http://localhost:9091/restricted1";
+      const response = await fetch(url, {
+        headers: {
+          Authorization: `${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      return response.json();
+    }, token);
+
+    console.log(token);
+    // Check if the response contains the expected error message when token is not provided
+    expect(response.error).toMatch(/Token not provided|Invalid token/);
   });
 });

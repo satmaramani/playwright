@@ -65,6 +65,16 @@ app.get("/restricted3", verifyToken, (req, res) => {
   res.status(200).json({ message: "Welcome to the restricted endpoint 3!" });
 });
 
+app.post("/logout", verifyToken, (req, res) => {
+  const token = req.headers.authorization;
+  if (!token) {
+    return res.status(400).json({ error: "Token not provided" });
+  }
+
+  // Send a response instructing the client to remove the token
+  res.status(200).json({ message: "Logout successful", clearToken: true });
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
