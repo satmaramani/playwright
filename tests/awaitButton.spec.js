@@ -37,7 +37,7 @@ test("Selector Wait for 5 seconds @awaitbutton @selectorawait", async () => {
   // Click on the "Hide me" button
   await page.click("#delayed-button-2");
 
-  await expect(await page.locator("#displayTextHere").textContent()).toBe(""); // Asserting that the resolved value is an empty object
+  await expect(await page.locator("#displayTextHere").textContent()).toBeNull(); // Asserting that the resolved value is an empty object
   // Wait for the displayTextHere element to be empty
   //   await page.waitForSelector('#displayTextHere:has-text("")');
 
