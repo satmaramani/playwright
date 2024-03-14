@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delayed Button Display</title>
+<style>
+  #button-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  #delayed-button {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<div id="button-container">
+  <button id="delayed-button" onclick="handleButtonClick()">Delayed Button display after 5 seconds</button>
+  <button id="delayed-button-2" style="display:none" onclick="handleButtonClickHide()">Hide me</button>
+  <div id="displayTextHere"></div>
+</div>
+
+<script>
+    function handleButtonClick()
+    {
+        document.getElementById('displayTextHere').innerHTML = "Somebody Clicked me";    
+        document.getElementById('delayed-button-2').style.display = 'block';
+    }
+    function handleButtonClickHide()
+    {
+        document.getElementById('displayTextHere').innerHTML = "";    
+        document.getElementById('delayed-button-2').style.display = 'none';
+    }
+// Function to display the button after a delay
+function displayButtonAfterDelay() {
+  // Delay for 2 seconds
+  setTimeout(function() {
+    // Display the button
+    document.getElementById('delayed-button').style.display = 'block';
+    
+  }, 200);
+}
+
+// Call the function when the page loads
+window.onload = displayButtonAfterDelay;
+</script>
+
+</body>
+</html>

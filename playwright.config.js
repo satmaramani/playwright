@@ -84,6 +84,7 @@ const projects = [
   {
     name: "chromium",
     use: {
+      repeatEach: 2,
       browserName: "chromium",
       // Add other browser options or settings specific to Chromium
     },

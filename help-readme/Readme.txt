@@ -55,3 +55,7 @@ npx playwright test --grep "@download" --project=chromium
     npx playwright test -g "calculat"
 
     npx playwright test -g "addition"
+
+
+//using another config file using --config 
+ npx playwright test --config=playwright2.config.js
