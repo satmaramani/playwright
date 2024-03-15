@@ -2,7 +2,7 @@ import { chromium, test, expect } from "@playwright/test";
 
 test("new tab accessing @openNewTab @newtab", async ({ page }) => {
   // Open the initial page
-  await page.goto("http://locahost:9090/openPageNewWindow/sourcePage.html");
+  await page.goto("http://localhost:9090/openPageNewWindow/sourcePage.html");
 
   // Wait for a new page to be opened
   const [newPage] = await Promise.all([

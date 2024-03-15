@@ -2,7 +2,7 @@ const { test, expect } = require("@playwright/test");
 
 test("Test Mouse and Keyboard Events @events", async ({ page }) => {
   // Navigate to the HTML page
-  await page.goto("http://locahost:9090/events/events.html");
+  await page.goto("http://localhost:9090/events/events.html");
 
   // Click the Single Click button
   await page.click("#singleClickBtn");
