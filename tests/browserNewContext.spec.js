@@ -1,6 +1,6 @@
 const { test, chromium } = require("@playwright/test");
 
-test.only("Browser new Context @newContext @browsercontext", async () => {
+test("Browser new Context @newContext @browsercontext", async () => {
   // Launch the browser
   const browser = await chromium.launch();
 
