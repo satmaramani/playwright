@@ -1,5 +1,5 @@
 name: Playwright Tests by Sam
-on: [push]
+#on: [push]
 jobs:
   test:
     timeout-minutes: 60
