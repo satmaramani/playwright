@@ -87,7 +87,6 @@ const projects = [
       repeatEach: 2,
       browserName: "chromium",
       trace: "on",
-      // Add other browser options or settings specific to Chromium
     },
   },
   {

@@ -32,7 +32,6 @@ function verifyToken(req, res, next) {
   });
 }
 
-// Login endpoint
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
   const user = users.find(
@@ -44,6 +43,9 @@ app.post("/login", (req, res) => {
 
   // Create JWT token
   const token = jwt.sign({ id: user.id, username: user.username }, SECRET_KEY);
+
+  // Set token as a cookie
+  res.cookie("token", token, { httpOnly: true });
   res.json({ token });
 });
 

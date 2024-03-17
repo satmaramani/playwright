@@ -1,0 +1,5 @@
+Request: http://localhost:9090/
+Page loaded
+Request: http://localhost:9090/favicon.ico
+Request: http://localhost:9090/traversal/page1.html
+Page loaded

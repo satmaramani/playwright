@@ -163,7 +163,6 @@ Session & State:
 state.
 Authentication:
 Device Emulation:
-Screenshots & Videos:
 Timeouts & Waits:
 Selectors:
 Proxies:
