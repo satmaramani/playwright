@@ -63,3 +63,6 @@ npx playwright test --grep "@download" --project=chromium
 
  //typescript example command 
  npx playwright test --project=chromium --headed --config=typescript.config.ts
+
+
+

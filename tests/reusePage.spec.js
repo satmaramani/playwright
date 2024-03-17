@@ -7,6 +7,7 @@ let page;
 
 test.beforeAll(async ({ browser }) => {
   page = await browser.newPage();
+  await page.goto("https://playwright.dev/");
 });
 
 test.afterAll(async () => {

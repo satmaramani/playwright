@@ -23,7 +23,7 @@ test("Multiple Locations Google map @googleMap @pizzaSearch", async ({
   // Click on the search button
   await pageAfghanistan.click("button#searchbox-searchbutton");
 
-  await pageAfghanistan.waitForTimeout(29000); // Wait for the search results to load
+  await pageAfghanistan.waitForTimeout(3000); // Wait for the search results to load
 
   // Close the page and context for Afghanistan
   await pageAfghanistan.close();

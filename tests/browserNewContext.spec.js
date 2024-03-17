@@ -33,7 +33,7 @@ test("Browser new Context @newContext @browsercontext", async () => {
   await page.locator("//div[@class='lJ9FBc']//input[@name='btnK']").click();
   await page.waitForEvent("domcontentloaded");
 
-  await page.waitForTimeout(29000);
+  await page.waitForTimeout(2000);
   page.pause();
   // Close the browser context
   //   await context.close();

@@ -41,7 +41,7 @@ test("API response with mocking @mock", async ({ page }) => {
   };
 
   // Intercept network requests and mock the response for the API URL
-  await page.route(apiUrl, (route) => {
+  await page.route("https://reqres.in/api/users/2", (route) => {
     route.fulfill({
       status: 200,
       contentType: "application/json",

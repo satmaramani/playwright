@@ -1,0 +1,28 @@
+//Start Debugging in powershell
+$env:DEBUG="pw:browser"
+$env:DEBUG="pw:channel"
+$env:DEBUG="pw:protocol"
+$env:DEBUG="pw:rpc"
+$env:DEBUG="pw:api"
+$env:DEBUG="pw:verbose"
+$env:DEBUG="pw:network"
+
+//Remove Debugging in power shell
+Remove-Item Env:\DEBUG
+
+
+The DEBUG environment variable in Playwright allows you to enable debug output for various components of Playwright. Here are some other options you can use:
+
+pw:browser: Debug output related to the browser instances managed by Playwright, including browser launch, page navigation, and page closing events.
+
+pw:channel: Debug output related to communication between Playwright's client and server components, including WebSocket messages and RPC calls.
+
+pw:protocol: Debug output related to the DevTools Protocol (CDP) messages exchanged between Playwright and the browser instances.
+
+pw:rpc: Debug output related to Remote Procedure Calls (RPC) between Playwright's client and server components.
+
+pw:api: Debug output related to Playwright's JavaScript API, including method calls and their parameters.
+
+pw:verbose: Enables verbose debug output, providing more detailed information compared to other debug options.
+
+pw:network: Debugging with pw:network is like becoming a detective in the world of web requests and responses. 

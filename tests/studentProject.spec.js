@@ -2,6 +2,14 @@ const { test, expect } = require("@playwright/test");
 
 test.beforeEach("Before Each", async ({ page }) => {});
 
+async function showCurrentActivities(page, currentMessage) {
+  await page.$eval(
+    "#headingIdForMessages",
+    (div, message) => (div.innerHTML = message), // Pass message as an argument
+    currentMessage // Pass currentMessage to the function
+  );
+}
+
 async function getActualRowsCount(page, counter = 0) {
   await page.waitForLoadState();
 
@@ -10,10 +18,13 @@ async function getActualRowsCount(page, counter = 0) {
 
   console.log("Current Counter value:", counter);
 
+  await showCurrentActivities(page, `Current Counter value: ${counter}`);
   // Check if the "Next" button is enabled
   const isNextPageEnabled = await page.locator("#nextPage").isEnabled();
 
   console.log("Next page enabled status:", isNextPageEnabled);
+
+  await showCurrentActivities(page, `Current Counter value: ${counter}`);
 
   if (isNextPageEnabled) {
     // Click on the "Next" button
@@ -25,14 +36,15 @@ async function getActualRowsCount(page, counter = 0) {
 
   // If the "Next" button is disabled, return the final counter value
   console.log("Final Counter value:", counter);
+  await showCurrentActivities(page, `Final Counter value:: ${counter}`);
   return counter;
 }
 
 async function addStudentData(page) {
   const jsonObject = [
     { student: "studentName", subject: "Subject1", marks: "1" },
-    // { student: "studentName2", subject: "Subject2", marks: "2" },
-    // { student: "studentName3", subject: "Subject3", marks: "3" },
+    { student: "studentName2", subject: "Subject2", marks: "2" },
+    { student: "studentName3", subject: "Subject3", marks: "3" },
     // { student: "studentName4", subject: "Subject4", marks: "4" },
     // { student: "studentName5", subject: "Subject5", marks: "5" },
     // { student: "studentName6", subject: "Subject6", marks: "6" },
@@ -59,15 +71,22 @@ async function addStudentData(page) {
     await page.fill("#marks", jsonObject[i]["marks"]);
 
     await page.locator("//button[@type='submit']").click();
+
+    await showCurrentActivities(
+      page,
+      `Adding Student Data of <b>${jsonObject[i]["student"]}</b>`
+    );
   }
   return jsonObject;
 }
 
 async function goToFirstPageList(page) {
+  await showCurrentActivities(page, "Traversing to first page Initial list ");
   await page.waitForTimeout(1000);
   const PrevPaginationIsEnabled = await page.locator("#prevPage").isEnabled();
 
   if (PrevPaginationIsEnabled) {
+    await showCurrentActivities(page, "PrevPaginationIsEnabled=true");
     await page.waitForTimeout(1000);
     await page.locator("#prevPage").click();
     await page.waitForLoadState();
@@ -87,36 +106,73 @@ test(" Student Addition @studentAdd @student", async ({ page }) => {
   //below function will return the row counter
   var finalRowCountPre = await getActualRowsCount(page, 0);
 
-  await page.waitForTimeout(1000);
+  await page.waitForTimeout(100);
+  await showCurrentActivities(
+    page,
+    `Total Number Of Students rows found <b>${jsonObject.length}</b> `
+  );
   await expect(finalRowCountPre).toBe(jsonObject.length);
   await goToFirstPageList(page);
 
   const firstSTudentRow = await page.locator("table tbody tr").first();
-  await page.waitForTimeout(1000);
+  await page.waitForTimeout(100);
+  await showCurrentActivities(
+    page,
+    `Will remove the row now ${firstSTudentRow}`
+  );
   await firstSTudentRow.getByText("Remove").click();
 
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(300);
 
   const finalRowCountPostRemoval = await getActualRowsCount(page, 0);
+
+  await showCurrentActivities(
+    page,
+    `Current number of Rows after removal => ${finalRowCountPostRemoval}`
+  );
+
   await expect(finalRowCountPostRemoval).toBe(jsonObject.length - 1);
-  await page.waitForTimeout(1000);
+  await page.waitForTimeout(100);
 
   await page.locator("#searchInput").fill("sam");
-  await page.waitForTimeout(1000);
+  await page.waitForTimeout(100);
   const finalRowCountPostSearch = await getActualRowsCount(page, 0);
   console.log("This is search result count ", finalRowCountPostSearch);
+  await showCurrentActivities(
+    page,
+    `This total is after search result count  => ${finalRowCountPostSearch}`
+  );
   expect(finalRowCountPostSearch).toBe(3);
 
   await page.getByText("Reset").click();
   const finalRowCountPostReset = await getActualRowsCount(page, 0);
   expect(finalRowCountPostReset).toBe(finalRowCountPostRemoval);
 
+  await showCurrentActivities(
+    page,
+    `Count after clicking on reset button => ${finalRowCountPostReset}`
+  );
+
   page.on("dialog", async (dialogBox) => {
-    setTimeout(() => dialogBox.accept(), 5000);
+    setTimeout(() => dialogBox.accept(), 500);
   });
 
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(300);
+
+  await showCurrentActivities(page, "Will show details of Student at row 1");
+
   await page.locator("(//button[contains(text(),'Details')])[1]").click();
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(300);
+
+  await showCurrentActivities(page, "Will show details of Student at row 2");
+
   await page.locator("(//button[contains(text(),'Details')])[2]").click();
+
+  await showCurrentActivities(
+    page,
+    "<h1>Finally I confirm that test is completed</h1>"
+  );
+
+  await page.setContent("<h1>Finally I confirm that test is completed</h1>");
+  await page.waitForTimeout(10000);
 });

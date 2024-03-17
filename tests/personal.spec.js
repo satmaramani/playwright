@@ -52,10 +52,14 @@ test("Fill the form and submit @form @submit", async ({ page }) => {
   const foodArray = foodPreferences.split(", ");
 
   // Assert the existence of "Pizza" and "Pasta" in the array
-  const pizzaExists = foodArray.includes("Pizza");
-  const pastaExists = foodArray.includes("Pasta");
+  // const pizzaExists = foodArray.includes("Pizza");
+  // const pastaExists = foodArray.includes("Pasta");
 
   await expect(foodPreferences).toContain(
     await page.locator("#outputFood").textContent()
   );
+
+  await expect(foodPreferences).toContain("Pizza");
+
+  await expect(foodPreferences).toContain("Pasta");
 });

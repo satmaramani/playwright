@@ -6,7 +6,7 @@ test("Soft failure example @soft @softfailure", async ({ page }) => {
     await page.goto("https://example.com");
 
     // Make an assertion that may fail
-    await expect.soft(page.title()).toBe("Expected Title");
+    await expect.soft(await page.title()).toBe("Expected Title");
   } catch (error) {
     // Handle the soft failure
     console.warn("Soft failure occurred:", error.message);

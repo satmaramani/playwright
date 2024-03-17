@@ -4,7 +4,7 @@ const { test, expect } = require("@playwright/test");
 test.beforeEach(async ({ page }) => {
   await page.goto("http://localhost:9090/index.html");
   const selector =
-    'a:has-text("Arithmatic Operations")[href="http://localhost:9090/calculation/operations.html"]';
+    'a:has-text("Arithmetic Operations")[href="http://localhost:9090/calculation/operations.html"]';
   await page.waitForSelector(selector, { visible: true });
   await page.click(selector);
   await page.waitForTimeout(1000);

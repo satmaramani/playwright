@@ -1,6 +1,6 @@
 const { test, expect } = require("@playwright/test");
 
-test.only("All HTML Elements verification", async ({ page }) => {
+test("All HTML Elements verification", async ({ page }) => {
   await page.goto("http://localhost:9090/htmlElements/all.html");
 
   await page.waitForLoadState();
