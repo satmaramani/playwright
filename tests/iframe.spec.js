@@ -1,4 +1,5 @@
 const { test, expect } = require("@playwright/test");
+//npx playwright test --project=chromium -g "@iframe" --headed
 
 test("Verify calculator operations in iframe @iframe", async ({ page }) => {
   // Navigate to the parent page containing the iframe

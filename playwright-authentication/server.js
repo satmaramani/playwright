@@ -77,6 +77,41 @@ app.post("/logout", verifyToken, (req, res) => {
   res.status(200).json({ message: "Logout successful", clearToken: true });
 });
 
+// Login endpoint
+app.post("/loginStorageState", (req, res) => {
+  const { username, password } = req.body;
+  const user = users.find(
+    (u) => u.username === username && u.password === password
+  );
+
+  if (!user) {
+    return res.status(401).json({ error: "Invalid username or password" });
+  }
+
+  // Create JWT token
+  const token = jwt.sign({ id: user.id, username: user.username }, SECRET_KEY);
+
+  // Set token as a cookie
+  res.cookie("token", token, { httpOnly: true });
+  res.json({ success: true });
+});
+
+// Restricted endpoint
+app.get("/restrictedStorageState", (req, res) => {
+  // Check if token is present in the request
+  const token = req.cookies.token;
+  if (!token) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+
+  try {
+    // Verify token
+    const decoded = jwt.verify(token, SECRET_KEY);
+    res.json({ message: "Authenticated", user: decoded });
+  } catch (error) {
+    res.status(401).json({ error: "Unauthorized" });
+  }
+});
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

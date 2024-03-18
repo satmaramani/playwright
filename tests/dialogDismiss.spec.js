@@ -1,4 +1,5 @@
 import { chromium, test, expect } from "@playwright/test";
+//npx playwright test --project=chromium -g "@dismiss" --headed
 
 test("Dismiss JavaScript Alert Box @dismiss @dialog", async ({ page }) => {
   // Navigate to a page with a JavaScript alert

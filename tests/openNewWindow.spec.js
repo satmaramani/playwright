@@ -1,5 +1,7 @@
 import { test, expect } from "@playwright/test";
 
+//npx playwright test --project=chromium -g "@openNewWindow" --headed
+
 test("new window handling-when second window resource url is known @openNewWindow @newwindow", async ({
   context,
 }) => {

@@ -2,6 +2,7 @@ const { test, chromium } = require("@playwright/test");
 const fs = require("fs/promises");
 const jwt = require("jsonwebtoken");
 
+//npx playwright test --project=chromium -g "@storageStateLogin"
 async function getResponse() {
   const response = await fetch("http://localhost:9091/login", {
     method: "POST",
