@@ -2,13 +2,7 @@ const { test, expect } = require("@playwright/test");
 
 test.beforeEach("Before Each", async ({ page }) => {});
 
-async function showCurrentActivities(page, currentMessage) {
-  await page.$eval(
-    "#headingIdForMessages",
-    (div, message) => (div.innerHTML = message), // Pass message as an argument
-    currentMessage // Pass currentMessage to the function
-  );
-}
+async function showCurrentActivities(page, currentMessage) {}
 
 async function getActualRowsCount(page, counter = 0) {
   await page.waitForLoadState();

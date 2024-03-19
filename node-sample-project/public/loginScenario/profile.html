@@ -4,17 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile</title>
+  <style>
+    /* Center align content */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7; /* Background color */
+    }
+
+    /* Style for message */
+    #message {
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <script src="/footer.js"></script>
-  <h2>Welcome</h2>
   <div id="message"></div>
   <script>
     const token = localStorage.getItem('token');
+    const messageElement = document.getElementById('message');
     if (token) {
-      document.getElementById('message').textContent = 'Welcome! Your login was successful.';
+      messageElement.textContent = 'Welcome! Your login was successful.';
     } else {
-      document.getElementById('message').textContent = 'You are not logged in.';
+      messageElement.textContent = 'You are not logged in.';
     }
   </script>
 </body>

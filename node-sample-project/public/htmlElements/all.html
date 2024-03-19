@@ -4,16 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Playwright Demo</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        table {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <script src="/footer.js"></script>
     <h1>Welcome to Playwright Demo</h1>
     
     <p>This is a paragraph element.</p>
     
     <a href="https://www.example.com">Link to Example</a>
-    
-
     
     <input type="text" id="username" placeholder="Enter your username">
     <input type="password" id="password" placeholder="Enter your password">
@@ -33,7 +43,7 @@
         <option value="option2">Option 2</option>
         <option value="option3">Option 3</option>
     </select>
-<br /><br />
+    <br /><br />
     <select id="select-demo1">
         <option value="mon">Monday</option>
         <option value="tue">Tuesday</option>
@@ -84,5 +94,6 @@
             <td>Row 2, Cell 2</td>
         </tr>
     </table>
+    <script src="/footer.js"></script>
 </body>
 </html>

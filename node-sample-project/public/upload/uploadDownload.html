@@ -4,6 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee List Uploader and Downloader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <script src="/footer.js"></script>
@@ -15,7 +44,7 @@
     <button onclick="uploadFile()">Upload</button>
 
     <!-- Display Uploaded Content -->
-    <div id="uploadedContent">
+    <div id="uploadedContent" style="display: none;">
         <h2>Uploaded Employee List</h2>
         <textarea id="employeeList" rows="10" cols="50"></textarea>
         <button onclick="downloadFile()">Download</button>

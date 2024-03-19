@@ -6,142 +6,226 @@
     <title>All HTML Elements</title>
     <style>
         /* Center-align container */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
         .container {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Adjust as needed */
-            margin-top: 500px; /* Add margin to the top */
+            min-height: 100vh;
+            background-color: #f7f7f7; /* Background color */
         }
 
         /* Style for content */
         .content {
-            text-align: left; /* Adjust alignment of content within container */
+            text-align: center;
+            padding: 20px;
+            background-color: #fff; /* Content background color */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Box shadow */
         }
 
+        /* Style for headings */
+        h1, h2, h3, h4, h5, h6 {
+            color: #333; /* Heading color */
+            margin-top: 20px;
+        }
+
+        /* Style for paragraphs */
+        p {
+            color: #666; /* Paragraph color */
+        }
+
+        /* Style for links */
+        a {
+            color: #007bff; /* Link color */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Style for buttons */
+        button {
+            background-color: #007bff; /* Button color */
+            color: #fff; /* Button text color */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3; /* Button hover color */
+        }
+
+        /* Style for inputs */
+        input[type="text"],
+        input[type="password"],
+        input[type="number"],
+        input[type="email"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* Style for tables */
         table {
             border-collapse: collapse;
             width: 100%;
+            margin-top: 20px;
         }
         th, td {
-            border: 1px solid #dddddd;
-            text-align: left;
+            border: 1px solid #ddd;
             padding: 8px;
         }
         th {
-            background-color: #ece4e4;
+            background-color: #f2f2f2;
         }
+
+        /* Style for lists */
+        ul, ol {
+            text-align: left;
+            margin-top: 10px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+
+        /* Style for images */
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        /* Style for divs and spans */
+        .div, .span {
+            display: block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+        }
+
     </style>
 </head>
 <body>
     <script src="/footer.js"></script>
     <div class="container">
         <div class="content">
-    <h1>All HTML Elements</h1>
+            <h1>All HTML Elements</h1>
 
-    <h2>Heading Elements</h2>
-    <h1 id="heading1">Heading 1</h1>
-    <h2 id="heading2">Heading 2</h2>
-    <h3 id="heading3">Heading 3</h3>
-    <h4 id="heading4">Heading 4</h4>
-    <h5 id="heading5">Heading 5</h5>
-    <h6 id="heading6">Heading 6</h6>
+            <h2>Heading Elements</h2>
+            <h1 id="heading1">Heading 1</h1>
+            <h2 id="heading2">Heading 2</h2>
+            <h3 id="heading3">Heading 3</h3>
+            <h4 id="heading4">Heading 4</h4>
+            <h5 id="heading5">Heading 5</h5>
+            <h6 id="heading6">Heading 6</h6>
 
-    <hr />
-    <h2>Paragraph Element</h2>
-    <p class="paragraph">This is a paragraph element.</p>
+            <hr />
+            <h2>Paragraph Element</h2>
+            <p class="paragraph">This is a paragraph element.</p>
 
-    <hr />
+            <hr />
 
-    <h2>Link Element</h2>
-    <a href="https://www.example.com" id="exampleLink" class="link">Link to Example</a>
+            <h2>Link Element</h2>
+            <a href="https://www.example.com" id="exampleLink" class="link">Link to Example</a>
 
-    <hr />
-    <h2>Button Element</h2>
-    <button id="submitButton" class="button">Click me</button>
+            <hr />
+            <h2>Button Element</h2>
+            <button id="submitButton" class="button">Click me</button>
 
-    <hr />
-    <h2>Input Elements</h2>
-    <input type="text" placeholder="Text Input" id="textInput" class="input">
-    <input type="password" placeholder="Password Input" id="passwordInput" class="input">
-    <input type="number" placeholder="Number Input" id="numberInput" class="input">
-    <input type="email" placeholder="Email Input" id="emailInput" class="input">
-    <input type="date" placeholder="Date Input" id="dateInput" class="input">
-    <input type="checkbox" id="checkbox" class="checkbox">
-    <label for="checkbox" class="checkboxLabel">Checkbox</label>
-    <input type="radio" id="radio1" name="radios" value="radio1" class="radio">
-    <label for="radio1" class="radioLabel">Radio 1</label>
-    <input type="radio" id="radio2" name="radios" value="radio2" class="radio">
-    <label for="radio2" class="radioLabel">Radio 2</label>
+            <hr />
+            <h2>Input Elements</h2>
+            <input type="text" placeholder="Text Input" id="textInput" class="input">
+            <input type="password" placeholder="Password Input" id="passwordInput" class="input">
+            <input type="number" placeholder="Number Input" id="numberInput" class="input">
+            <input type="email" placeholder="Email Input" id="emailInput" class="input">
+            <input type="date" placeholder="Date Input" id="dateInput" class="input">
+            <input type="checkbox" id="checkbox" class="checkbox">
+            <label for="checkbox" class="checkboxLabel">Checkbox</label>
+            <input type="radio" id="radio1" name="radios" value="radio1" class="radio">
+            <label for="radio1" class="radioLabel">Radio 1</label>
+            <input type="radio" id="radio2" name="radios" value="radio2" class="radio">
+            <label for="radio2" class="radioLabel">Radio 2</label>
 
-    <hr />
-    <h2>Form Elements</h2>
-    <form id="sampleForm" class="form">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" class="textInput">
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" class="passwordInput">
-        <br>
-        <textarea rows="4" cols="50" placeholder="Textarea" id="message" class="textarea"></textarea>
-        <br>
-        <input type="submit" value="Submit" id="submitButton" class="submitButton">
-    </form>
+            <hr />
+            <h2>Form Elements</h2>
+            <form id="sampleForm" class="form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" class="textInput">
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" class="passwordInput">
+                <br>
+                <textarea rows="4" cols="50" placeholder="Textarea" id="message" class="textarea"></textarea>
+                <br>
+                <input type="submit" value="Submit" id="submitButton" class="submitButton">
+            </form>
 
-    <hr />
-    <h2>Select / Dropdown Element</h2>
-    <select id="selectBox" class="select">
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
-    </select>
+            <hr />
+            <h2>Select / Dropdown Element</h2>
+            <select id="selectBox" class="select">
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+            </select>
 
-    <hr />
+            <hr />
 
-    <h2>Image Element</h2>
-    <img src="https://via.placeholder.com/150" alt="Placeholder Image" id="placeholderImage" class="image">
+            <h2>Image Element</h2>
+            <img src="https://via.placeholder.com/150" alt="Placeholder Image" id="placeholderImage" class="image">
 
-    <hr />
-    <h2>List Elements</h2>
-    <ul id="unorderedList" class="list">
-        <li>Unordered List Item 1</li>
-        <li>Unordered List Item 2</li>
-        <li>Unordered List Item 3</li>
-    </ul>
-    <ol id="orderedList" class="list">
-        <li>Ordered List Item 1</li>
-        <li>Ordered List Item 2</li>
-        <li>Ordered List Item 3</li>
-    </ol>
-    <hr />
+            <hr />
+            <h2>List Elements</h2>
+            <ul id="unorderedList" class="list">
+                <li>Unordered List Item 1</li>
+                <li>Unordered List Item 2</li>
+                <li>Unordered List Item 3</li>
+            </ul>
+            <ol id="orderedList" class="list">
+                <li>Ordered List Item 1</li>
+                <li>Ordered List Item 2</li>
+                <li>Ordered List Item 3</li>
+            </ol>
+            <hr />
 
-    <h2>Table Elements</h2>
-    <table id="sampleTable" class="table">
-        <thead>
-            <tr>
-                <th>Header 1</th>
-                <th>Header 2</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Row 1, Cell 1</td>
-                <td>Row 1, Cell 2</td>
-            </tr>
-            <tr>
-                <td>Row 2, Cell 1</td>
-                <td>Row 2, Cell 2</td>
-            </tr>
-        </tbody>
-    </table>
+            <h2>Table Elements</h2>
+            <table id="sampleTable" class="table">
+                <thead>
+                    <tr>
+                        <th>Header 1</th>
+                        <th>Header 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Row 1, Cell 1</td>
+                        <td>Row 1, Cell 2</td>
+                    </tr>
+                    <tr>
+                        <td>Row 2, Cell 1</td>
+                        <td>Row 2, Cell 2</td>
+                    </tr>
+                </tbody>
+            </table>
 
-    <hr />
-    <h2>Div and Span Elements</h2>
-    <div id="sampleDiv" class="div">This is a div element.</div>
-    <span id="sampleSpan" class="span">This is a span element.</span>
+            <hr />
+            <h2>Div and Span Elements</h2>
+            <div id="sampleDiv" class="div">This is a div element.</div>
+            <span id="sampleSpan" class="span">This is a span element.</span>
+        </div>
     </div>
-
-    </div>
-
 </body>
 </html>

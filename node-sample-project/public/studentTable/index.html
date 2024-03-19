@@ -1,172 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Management System</title>
-<div id="headingIdForMessages"> Here messages will be displayed</div>
-<style>
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  th {
-    background-color: #f2f2f2;
-    cursor: pointer;
-  }
-  .pagination {
-    margin-top: 20px;
-    text-align: center;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Management System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    form {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    form label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    form input[type="text"],
+    form input[type="number"] {
+      width: calc(100% - 22px);
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    form button[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    form button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    #searchInput,
+    #button-container button {
+      margin-bottom: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+      cursor: pointer;
+    }
+    .pagination {
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <h2>Add Student</h2>
+    <form id="addStudentForm">
+      <label for="studentName">Name:</label>
+      <input type="text" id="studentName" name="studentName" required>
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" name="subject" required>
+      <label for="marks">Marks:</label>
+      <input type="number" id="marks" name="marks" required>
+      <button type="submit">Add Student</button>
+    </form>
 
-  <script src="/footer.js"></script>
-<h2>Add Student</h2>
+    <h2>Student List</h2>
 
-<form id="addStudentForm">
-  <label for="studentName">Name:</label>
-  <input type="text" id="studentName" name="studentName" required>
-  <label for="subject">Subject:</label>
-  <input type="text" id="subject" name="subject" required>
-  <label for="marks">Marks:</label>
-  <input type="number" id="marks" name="marks" required>
-  <button type="submit">Add Student</button>
-</form>
+    <input type="text" id="searchInput" placeholder="Search by name...">
+    <button onclick="resetSearch()">Reset</button>
 
-<h2>Student List</h2>
+    <table id="studentTable">
+      <thead>
+        <tr>
+          <th onclick="sortStudents('name')">Name</th>
+          <th onclick="sortStudents('subject')">Subject</th>
+          <th onclick="sortStudents('marks')">Marks</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Student rows will be added dynamically here -->
+      </tbody>
+    </table>
 
-<input type="text" id="searchInput" placeholder="Search by name...">
-<button onclick="resetSearch()">Reset</button>
-<table id="studentTable">
-  <thead>
-    <tr>
-      <th onclick="sortStudents('name')">Name</th>
-      <th onclick="sortStudents('subject')">Subject</th>
-      <th onclick="sortStudents('marks')">Marks</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- Student rows will be added dynamically here -->
-  </tbody>
-</table>
+    <div class="pagination">
+      <button id="prevPage">Previous Page</button>
+      <span id="currentPage"></span>
+      <button id="nextPage">Next Page</button>
+    </div>
+  </div>
 
-<div class="pagination">
-  <button id="prevPage">Previous Page</button>
-  <span id="currentPage"></span>
-  <button id="nextPage">Next Page</button>
-</div>
-
-<script>
-  var students = [];
-  var pageSize = 5;
-  var currentPage = 1;
-
-  var addStudentForm = document.getElementById('addStudentForm');
-  var studentTable = document.getElementById('studentTable');
-  var searchInput = document.getElementById('searchInput');
-  var prevPageButton = document.getElementById('prevPage');
-  var nextPageButton = document.getElementById('nextPage');
-  var currentPageSpan = document.getElementById('currentPage');
-
-  addStudentForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    var studentName = document.getElementById('studentName').value;
-    var subject = document.getElementById('subject').value;
-    var marks = document.getElementById('marks').value;
-    addStudent(studentName, subject, marks);
-    addStudentForm.reset();
-  });
-
-  searchInput.addEventListener('input', function(event) {
-    filterStudents(event.target.value);
-  });
-
-  prevPageButton.addEventListener('click', function() {
-    showPage(currentPage - 1);
-  });
-
-  nextPageButton.addEventListener('click', function() {
-    showPage(currentPage + 1);
-  });
-
-  function addStudent(name, subject, marks) {
-    var student = { name: name, subject: subject, marks: marks };
-    students.push(student);
-    renderStudents();
-  }
-
-  function renderStudents() {
-    var startIndex = (currentPage - 1) * pageSize;
-    var endIndex = startIndex + pageSize;
-    var filteredStudents = students.filter(student => studentMatchesSearch(student));
-    var totalPages = Math.ceil(filteredStudents.length / pageSize);
-    currentPage = Math.min(currentPage, totalPages);
-    currentPageSpan.textContent = 'Page ' + currentPage + ' of ' + totalPages;
-
-    var studentRows = '';
-    for (var i = startIndex; i < endIndex && i < filteredStudents.length; i++) {
-      studentRows += '<tr><td>' + filteredStudents[i].name + '</td><td>' + filteredStudents[i].subject + '</td><td>' + filteredStudents[i].marks + '</td><td><button onclick="removeStudent(' + i + ')">Remove</button><button onclick="showDetails(' + i + ')">Details</button></td></tr>';
-    }
-    studentTable.querySelector('tbody').innerHTML = studentRows;
-
-    prevPageButton.disabled = currentPage === 1;
-    nextPageButton.disabled = currentPage === totalPages;
-  }
-
-  function studentMatchesSearch(student) {
-    var searchQuery = searchInput.value.trim().toLowerCase();
-    if (!searchQuery) {
-      return true;
-    }
-    return student.name.toLowerCase().includes(searchQuery);
-  }
-
-  function filterStudents(searchQuery) {
-    currentPage = 1;
-    renderStudents();
-  }
-
-  function removeStudent(index) {
-    students.splice(index, 1);
-    renderStudents();
-  }
-
-  function showPage(pageNumber) {
-    currentPage = pageNumber;
-    renderStudents();
-  }
-
-  function resetSearch() {
-    searchInput.value = '';
-    filterStudents('');
-  }
-
-  function sortStudents(column) {
-    students.sort((a, b) => {
-      if (a[column] < b[column]) {
-        return -1;
-      }
-      if (a[column] > b[column]) {
-        return 1;
-      }
-      return 0;
+  <script>
+    var students = [];
+    var pageSize = 5;
+    var currentPage = 1;
+  
+    var addStudentForm = document.getElementById('addStudentForm');
+    var studentTable = document.getElementById('studentTable');
+    var searchInput = document.getElementById('searchInput');
+    var prevPageButton = document.getElementById('prevPage');
+    var nextPageButton = document.getElementById('nextPage');
+    var currentPageSpan = document.getElementById('currentPage');
+  
+    addStudentForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      var studentName = document.getElementById('studentName').value;
+      var subject = document.getElementById('subject').value;
+      var marks = document.getElementById('marks').value;
+      addStudent(studentName, subject, marks);
+      addStudentForm.reset();
     });
-    renderStudents();
-  }
-
-  function showDetails(index) {
-    var student = students[index];
-    alert('Student Details:\nName: ' + student.name + '\nSubject: ' + student.subject + '\nMarks: ' + student.marks);
-  }
-</script>
-
+  
+    searchInput.addEventListener('input', function(event) {
+      filterStudents(event.target.value);
+    });
+  
+    prevPageButton.addEventListener('click', function() {
+      showPage(currentPage - 1);
+    });
+  
+    nextPageButton.addEventListener('click', function() {
+      showPage(currentPage + 1);
+    });
+  
+    function addStudent(name, subject, marks) {
+      var student = { name: name, subject: subject, marks: marks };
+      students.push(student);
+      renderStudents();
+    }
+  
+    function renderStudents() {
+      var startIndex = (currentPage - 1) * pageSize;
+      var endIndex = startIndex + pageSize;
+      var filteredStudents = students.filter(student => studentMatchesSearch(student));
+      var totalPages = Math.ceil(filteredStudents.length / pageSize);
+      currentPage = Math.min(currentPage, totalPages);
+      currentPageSpan.textContent = 'Page ' + currentPage + ' of ' + totalPages;
+  
+      var studentRows = '';
+      for (var i = startIndex; i < endIndex && i < filteredStudents.length; i++) {
+        studentRows += '<tr><td>' + filteredStudents[i].name + '</td><td>' + filteredStudents[i].subject + '</td><td>' + filteredStudents[i].marks + '</td><td><button onclick="removeStudent(' + i + ')">Remove</button><button onclick="showDetails(' + i + ')">Details</button></td></tr>';
+      }
+      studentTable.querySelector('tbody').innerHTML = studentRows;
+  
+      prevPageButton.disabled = currentPage === 1;
+      nextPageButton.disabled = currentPage === totalPages;
+    }
+  
+    function studentMatchesSearch(student) {
+      var searchQuery = searchInput.value.trim().toLowerCase();
+      if (!searchQuery) {
+        return true;
+      }
+      return student.name.toLowerCase().includes(searchQuery);
+    }
+  
+    function filterStudents(searchQuery) {
+      currentPage = 1;
+      renderStudents();
+    }
+  
+    function removeStudent(index) {
+      students.splice(index, 1);
+      renderStudents();
+    }
+  
+    function showPage(pageNumber) {
+      currentPage = pageNumber;
+      renderStudents();
+    }
+  
+    function resetSearch() {
+      searchInput.value = '';
+      filterStudents('');
+    }
+  
+    function sortStudents(column) {
+      students.sort((a, b) => {
+        if (a[column] < b[column]) {
+          return -1;
+        }
+        if (a[column] > b[column]) {
+          return 1;
+        }
+        return 0;
+      });
+      renderStudents();
+    }
+  
+    function showDetails(index) {
+      var student = students[index];
+      alert('Student Details:\nName: ' + student.name + '\nSubject: ' + student.subject + '\nMarks: ' + student.marks);
+    }
+  </script>
 </body>
 </html>

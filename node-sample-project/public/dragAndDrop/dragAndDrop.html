@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drag and Drop Example</title>
     <style>
+        /* Center-align container */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7; /* Background color */
+        }
+
+        /* Styles for drag element */
         #dragElement {
             width: 100px;
             height: 100px;
@@ -14,18 +27,25 @@
             line-height: 100px;
             cursor: pointer;
         }
+
+        /* Styles for drop target */
         #dropTarget {
             width: 200px;
             height: 200px;
             border: 2px dashed #007bff;
-        }
-        #resetButton {
             margin-top: 20px;
-            padding: 10px;
+            text-align: center;
+            line-height: 200px;
+        }
+
+        /* Styles for reset button */
+        #resetButton {
+            padding: 10px 20px;
             background-color: #dc3545;
             color: white;
             border: none;
             cursor: pointer;
+            margin-top: 20px;
         }
     </style>
 </head>

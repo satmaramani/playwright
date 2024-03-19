@@ -23,20 +23,17 @@ test("Re login using storage State and validate @storageState2", async () => {
 
   console.log("Token Value is => ", `${storageStateData.cookies[0].value}`);
 
-  await page.pause();
   // Check if the response contains a token or error message
   if ("message" in response) {
     // Successful login
     console.log("Error:", response.error);
-    await page.pause();
+
     expect(response.message).toBe("Welcome to the restricted endpoint 1!");
-    await page.pause();
   } else {
     expect(response.error).not.toBe("Invalid token");
     console.log(response);
   }
 
-  await page.pause();
   // Perform actions on the restricted page, such as verifying authentication
 
   await browser.close();

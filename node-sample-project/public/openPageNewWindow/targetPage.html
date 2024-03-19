@@ -4,13 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Target Page Title</title>
-    <script>
-        function CopyContents()
-        {
-            var contents = document.getElementById("textbox").value;
-            document.getElementById("placeholderSpan").innerText = contents;
+    <style>
+        /* Center align content */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7; /* Background color */
         }
-    </script>
+
+        /* Style for input, button, and span */
+        input[type="text"], button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #placeholderSpan {
+            display: block;
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        /* Style for link */
+        a {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <script src="/footer.js"></script>
@@ -20,5 +68,12 @@
     <span id="placeholderSpan"></span>
 
     <a href="targetPage2.html" target="_blank">Target Page 2</a>
+
+    <script>
+        function CopyContents() {
+            var contents = document.getElementById("textbox").value;
+            document.getElementById("placeholderSpan").innerText = contents;
+        }
+    </script>
 </body>
 </html>

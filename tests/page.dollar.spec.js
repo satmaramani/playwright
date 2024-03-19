@@ -67,7 +67,7 @@ test(" Demo of Page.Dollar @chaining ", async () => {
   //   lastInput.fill("This is Last Element");
   //   secondInput.fill("This is Second Element");
 
-  await page.waitForTimeout(20000);
+  await page.waitForTimeout(5000);
   // Close the browser
   await browser.close();
 });
