@@ -1,3 +1,6 @@
+
+npx playwright test tests/firstTest.spec.js
+
 npx playwright test --grep --% "@geolocation" --project=chromium --headed 
 
 

@@ -18,7 +18,7 @@ const config = defineConfig({
   testMatch: ["**/*.test.js", "**/*.spec.js"],
   timeout: 30000,
 
-  globalTimeout: 100000, // 60 seconds
+  globalTimeout: 60000, // 60 seconds
   // grep: /tab2/,
   // outputDir: "samOutPut",
   testDir: "./tests",
@@ -49,7 +49,7 @@ const config = defineConfig({
   },
   expect: {
     // Maximum time expect() should wait for the condition to be met.
-    timeout: 100,
+    timeout: 5000,
 
     toHaveScreenshot: {
       // An acceptable amount of pixels that could be different, unset by default.

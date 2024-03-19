@@ -66,6 +66,7 @@
         <button onclick="performCalculation('divide')"  class="divide">Divide</button>
     </div>
     <div class="result">
+        Operation: <span id="operationId"></span> <br />
         Here is the output:- <span id="output"></span>
     </div>
 
@@ -74,25 +75,31 @@
             const num1 = parseFloat(document.getElementById('num1').value);
             const num2 = parseFloat(document.getElementById('num2').value);
             let result;
+            let operation_id = "NA";
 
             switch (operation) {
                 case 'add':
                     result = num1 + num2;
+                    operation_id="Addition";
                     break;
                 case 'subtract':
                     result = num1 - num2;
+                    operation_id="Subtraction";
                     break;
                 case 'multiply':
                     result = num1 * num2;
+                    operation_id="Multiplication";
                     break;
                 case 'divide':
                     result = num1 / num2;
+                    operation_id="Division";
                     break;
                 default:
                     result = 'Invalid operation';
             }
 
             document.getElementById('output').innerHTML = result;
+            document.getElementById('operationId').innerHTML = operation_id;
             document.getElementById('output').classList.add('highlight');
         }
     </script>
