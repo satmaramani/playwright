@@ -8,7 +8,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "esm": "^3.2.25",
     "jsonwebtoken": "^9.0.2",
+    "lighthouse": "^11.6.0",
     "playwright": "^1.42.1",
     "playwright-firefox": "^1.42.1",
     "playwright-webkit": "^1.42.1"

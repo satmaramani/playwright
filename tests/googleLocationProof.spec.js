@@ -1,4 +1,4 @@
-const { test, chromium } = require("@playwright/test");
+const { test } = require("@playwright/test");
 
 test("Multiple Locations Google map @googleMap @pizzaSearch", async ({
   browser,

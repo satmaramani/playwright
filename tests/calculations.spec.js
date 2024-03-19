@@ -29,7 +29,6 @@ test("@subtraction @calculations  Subtraction", async ({ page }) => {
 test("@multiplication  @calculations Multiplication", async ({ page }) => {
   await page.locator("#num1").fill("10");
   await page.locator("#num2").fill("5");
-  debugger;
   await page.locator(".multiply").click();
   await page.waitForSelector("#output");
   expect(await page.locator("#output").innerText()).toBe("50");
