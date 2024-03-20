@@ -1,0 +1,35 @@
+@openNewWindow  @newwindow  @writeonconsole @annotation @awaitbutton  @selectorawait @browsercontext @newContext 
+@browsercontext addition @calculations @subtraction @calculations @multiplication  @calculations @division  @calculations
+debugBrowser @describe  describetest1 describetest2 @dismiss @dialog @drag @drop @dragAndDrop @dropdown  @duringTraining
+@events  @title  @link @tab @fixtures @geolocation @googleMap @pizzaSearch @iframe @isvisible @login @loginApiMethodPass
+@loginApiMethodRestricted
+loginApiMethodRestrictedPass
+loginApiMethodRestrictedFail
+loginApiMethodFail
+storageStateLogin
+storageState
+storageState2
+loginContextStorageState
+@mock
+@openNewTab @newtab
+
+@page.singledollar
+@page.doubledollar1
+@page.doubledollar2
+@chaining
+
+@form @submit
+
+@timeout @retries
+beforeEach
+@rightclick @rightClick
+@screenshot
+slower
+softfailure
+@studentAdd @student
+@tab
+@testinfo
+@goback @traversal
+@download @upload
+@video
+@viewport500 @viewport

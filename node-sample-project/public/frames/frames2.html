@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frames and Iframes Example</title>
+    <style>
+        /* Center align content */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7; /* Background color */
+        }
+
+        /* Style for iframes */
+        iframe {
+            border: 2px solid #ccc;
+            margin: 10px;
+            width: 80%; /* Adjust width as needed */
+            max-width: 600px; /* Maximum width for better readability */
+            height: 400px; /* Fixed height for consistency */
+        }
+
+        /* Style for main content */
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <script src="/footer.js"></script>
+    <!-- Main content -->
+    <h1>Main Content will be displayed</h1>
+    
+    <iframe id="google_frame_id" src="https://playwright.dev/docs/actionability#assertions" title="Frame 1"></iframe>
+    
+    <!-- Frame 2 -->
+    <iframe id="playwright.dev" src="https://playwright.dev" title="Frame 2"></iframe>
+    
+    <!-- Iframe 1 -->
+    <iframe id="iframe1" src="https://playwright.dev/docs/screenshots" title="Iframe 1"></iframe>
+    
+    
+</body>
+</html>

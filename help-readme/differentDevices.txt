@@ -1,20 +1,18 @@
 Desktop:
+    Desktop Chrome
+    Desktop Firefox
+    Desktop Safari
+    Desktop Edge
 
-Desktop Chrome
-Desktop Firefox
-Desktop Safari
-Desktop Edge
 Mobile:
-
-iPhone 12
-Pixel 5
-Galaxy S20
-iPad Mini
-Nexus 7
-iPhone SE
+    iPhone 12
+    Pixel 5
+    Galaxy S20
+    iPad Mini
+    Nexus 7
+    iPhone SE
 
 Tablets:
-
-iPad
-iPad Pro
-iPad Mini
+    iPad
+    iPad Pro
+    iPad Mini

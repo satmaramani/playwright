@@ -1,5 +1,6 @@
 In Playwright, contextOptions are configurations that you can pass when creating a browser context. 
 These options allow you to customize the behavior of the browser context according to your requirements. 
+
 Here are some commonly used contextOptions:
 
 recordVideo (RecordVideoOptions): Records a video of the browser's execution.

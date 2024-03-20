@@ -26,10 +26,7 @@ test("Session Storage Login @storageStateLogin", async () => {
   const response = await getResponse();
   console.log(" This is response received from URL ", response);
   console.log(" This is response received from URL ", response.token);
-  // Extract token from cookies
-  //   const cookies = await context.cookies();
-  //   const tokenCookie = cookies.find((cookie) => cookie.name === "token");
-  //   await page.pause();
+
   const decodedToken = jwt.decode(response.token);
 
   if (response.token) {
@@ -67,8 +64,6 @@ test("Re login using storage State and validate @storageState", async () => {
   // Navigate to restricted endpoint
   const page = await context.newPage();
   await page.goto("http://localhost:9091/restricted1");
-
-  // Perform actions on the restricted page, such as verifying authentication
 
   await browser.close();
 });

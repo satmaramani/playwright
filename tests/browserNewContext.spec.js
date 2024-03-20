@@ -34,7 +34,7 @@ test("Browser new Context @newContext @browsercontext", async () => {
   await page.waitForEvent("domcontentloaded");
 
   await page.waitForTimeout(2000);
-  page.pause();
+
   // Close the browser context
   //   await context.close();
 

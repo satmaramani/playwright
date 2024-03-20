@@ -1,6 +1,6 @@
 const { test, expect } = require("@playwright/test");
 
-test("All HTML Elements verification", async ({ page }) => {
+test("All HTML Elements verification @someTag", async ({ page }) => {
   await page.goto("http://localhost:9090/htmlElements/all.html");
 
   await page.waitForLoadState();
@@ -33,13 +33,14 @@ test("All HTML Elements verification", async ({ page }) => {
 
   await page.waitForTimeout(200);
   page.on("dialog", async (dialog) => {
-    await page.waitForTimeout(200);
+    await page.waitForTimeout(2000);
     dialog.accept();
   });
   await page.waitForTimeout(200);
   await page.locator("#submitBtn").click();
 
   await page.getByRole("checkbox").first().check();
+  await page.getByRole("checkbox").nth(3).check();
 
   await page.getByRole("radio").last().check();
 

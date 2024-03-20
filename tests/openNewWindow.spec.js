@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 //npx playwright test --project=chromium -g "@openNewWindow" --headed
 
-test("new window handling-when second window resource url is known @openNewWindow @newwindow", async ({
+test("new window handling-when second window resource url is known @openNewWindow @newwindow @writeonconsole", async ({
   context,
 }) => {
   // Create window one object
@@ -17,6 +17,7 @@ test("new window handling-when second window resource url is known @openNewWindo
   await newPage.waitForLoadState();
   await newPage.waitForURL("**/targetPage.html");
   console.log(await newPage.title());
+  console.log(" New Page is opened, URL is ", newPage.url());
 
   // Interact with elements on the new tab page
   await newPage.fill("#textbox", "This is Sam");
@@ -48,4 +49,27 @@ test("new window handling-when second window resource url is known @openNewWindo
 
   // Assert the text content
   expect(headingText).toBe("This is final target page 2");
+
+  // Wait for a new page event at the context level
+  const pagePromise3 = context.waitForEvent("page");
+
+  const links = await finalPage.locator('a[alt="repeat alt text"]').all();
+
+  for (const link of links) {
+    const url = await link.getAttribute("href");
+
+    await finalPage.evaluate((url) => {
+      // Check if the DOM content is loaded before manipulation
+      if (document.readyState === "complete") {
+        // Create a new <div> element to display the URL
+        const div = document.createElement("div");
+        div.textContent = `URL of the link: ${url}`;
+        // Insert the <div> element at the top of the page
+        document.body.prepend(div);
+      }
+    }, url);
+
+    await link.click();
+    await finalPage.waitForURL();
+  }
 });
