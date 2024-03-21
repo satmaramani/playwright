@@ -15,13 +15,13 @@ const config = defineConfig({
   quiet: true,
   globalTeardown: "./SamTeardown.js",
   globalSetup: "./samGlobalSetup.js",
-  testMatch: ["**/*.test.js", "**/*.spec.js"],
+  testMatch: ["**/tests/**/*.spec.js"],
   timeout: 30000,
 
   globalTimeout: 60000, // 60 seconds
   // grep: /tab2/,
   // outputDir: "samOutPut",
-  testDir: "./tests",
+  testDir: "tests",
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */

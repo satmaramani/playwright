@@ -1,3 +1,7 @@
+@accessibility
+
+@childWindows => To show the error and internal tries => waiting for element to be visible, enabled and stable
+
 @openNewWindow  @newwindow  @writeonconsole @annotation @awaitbutton  @selectorawait @browsercontext @newContext 
 @browsercontext addition @calculations @subtraction @calculations @multiplication  @calculations @division  @calculations
 debugBrowser @describe  describetest1 describetest2 @dismiss @dialog @drag @drop @dragAndDrop @dropdown  @duringTraining

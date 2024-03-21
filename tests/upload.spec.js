@@ -32,14 +32,13 @@ test("@download @upload Upload file", async ({ page }) => {
   console.log("This is text inside textarea");
   console.log(employeeListText);
   // Write the contents to a file
-  const filePath1 = "D:/sam0803202402.txt"; // Specify the path where you want to save the downloaded file
+  const filePath1 = "D:/sam2103202412noon.txt"; // Specify the path where you want to save the downloaded file
   fs.writeFileSync(filePath1, employeeListText);
 
   // File path to upload
   // Click on the element that triggers the file download
   await page.click("//button[@onclick='downloadFile()']"); // Replace 'button.download-button' with the selector of the download button
 
-  debugger;
   // Wait for the download to start (you might need to adjust the timeout)
   await page.waitForTimeout(2000); // Adjust the timeout as needed
 
