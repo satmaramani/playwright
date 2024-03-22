@@ -1,0 +1,14 @@
+git init
+
+//create .gitignore file and add node_modules/ in that
+
+git add .
+
+
+git commit -m "Initial commit"
+
+//git remote add origin <remote_repository_url>
+
+git remote add origin 
+
+git push -u origin master

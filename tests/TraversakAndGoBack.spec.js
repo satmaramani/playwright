@@ -4,8 +4,10 @@ test("Go back and go Forward @goback @traversal", async () => {
   const browser = await chromium.launch();
   const context = await browser.newContext();
   const page = await context.newPage();
+  const page2 = await context.newPage();
 
   await page.goto("http://localhost:9090/index.html");
+  await page2.goto("stackoverflow.com");
 
   // Click on the link to go to the traversal page
   await page.locator("//a[normalize-space()='Traversal Pages']").click();

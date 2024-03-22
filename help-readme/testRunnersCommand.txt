@@ -1,0 +1,12 @@
+Chai 
+    cd D:\chai-with-playwright ; npx playwright test testFile.spec.js
+
+    PS D:\chai-with-playwright> npx playwright test testFile.spec.js
+
+JEST 
+    cd D:\jest-with-playwright ; npx jest
+    PS D:\jest-with-playwright> npx jest
+
+Mocha 
+    cd D:\mocha-playwright ; npx mocha --timeout 2000 .\firstTest.spec.js        
+    PS D:\mocha-playwright> npx mocha --timeout 2000 .\firstTest.spec.js        

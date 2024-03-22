@@ -1,16 +1,12 @@
-Session 3: Advanced Interactions and Assertions (Duration: 30 Minutes)
-
-
+Advanced Interactions and Assertions (Duration: 30 Minutes)
 
 o   Keyboard and mouse events
 
-·       Assertions and Testing
+    Using Jest, Mocha
 
-·         Using Jest, Mocha
 
- 
 
-Session 4: Playwright Features Deep Dive (Duration: 30 Minutes)
+Playwright Features Deep Dive (Duration: 30 Minutes)
 
 ·       Handling Pop-ups and Dialogs
 
@@ -18,24 +14,15 @@ Session 4: Playwright Features Deep Dive (Duration: 30 Minutes)
 
 ·       Network Interception and Mocking
 
-o   Intercepting network requests
-
-o   Mocking responses
-
- 
  
 
-Session 5: Managing States and Testing Strategies (Duration: 30 Minutes)
+Managing States and Testing Strategies (Duration: 30 Minutes)
 
- 
-
-·       Authentication and State Management
+    Authentication and State Management
 
 o   Handling login sessions
 
 o   Using context storage for state reuse
-
-·       Testing Strategies
 
  
 Session 7: Accessibility, Visual Testing, and Reporting (Duration: 30 Minutes)

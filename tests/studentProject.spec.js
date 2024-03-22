@@ -148,7 +148,7 @@ test(" Student Addition @studentAdd @student", async ({ page }) => {
   );
 
   page.on("dialog", async (dialogBox) => {
-    setTimeout(() => dialogBox.accept(), 500);
+    dialogBox.accept();
   });
 
   await page.waitForTimeout(300);
