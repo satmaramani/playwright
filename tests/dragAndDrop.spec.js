@@ -1,7 +1,7 @@
 const { test, expect } = require("@playwright/test");
 
 test("Drag & Drop example @drag @drop @dragAndDrop", async ({ page }) => {
-  await page.goto("http://localhost:9090/dragAndDrop/dragAndDrop.html");
+  await page.goto("/dragAndDrop/dragAndDrop.html");
 
   // Get handles to drag and drop elements
   const dragElement = await page.$("#dragElement");

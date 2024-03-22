@@ -2,9 +2,9 @@ const { test, expect } = require("@playwright/test");
 const fs = require("fs");
 
 test.beforeEach("Before Each", async ({ page }) => {
-  await page.goto("http://localhost:9090/index.html");
+  await page.goto("/index.html");
   const selector =
-    'a:has-text("Upload / Download Pages")[href="http://localhost:9090/upload/uploadDownload.html"]';
+    'a:has-text("Upload / Download Pages")[href="/upload/uploadDownload.html"]';
   await page.waitForSelector(selector, { visible: true });
   await page.click(selector);
   await page.waitForTimeout(1000);

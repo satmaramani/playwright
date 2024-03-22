@@ -2,7 +2,7 @@ const { test, expect } = require("@playwright/test");
 
 test("API response without mocking @mock", async ({ page }) => {
   // Navigate to a page that automatically triggers the API request
-  await page.goto("http://localhost:9090");
+  await page.goto("/index.html");
 
   // Wait for the API request to complete
   await page.waitForLoadState("networkidle");
@@ -50,7 +50,7 @@ test("API response with mocking @mock", async ({ page }) => {
   });
 
   // Navigate to a page that automatically triggers the API request
-  await page.goto("http://localhost:9090");
+  await page.goto("/index.html");
 
   // Wait for the API request to complete
   await page.waitForLoadState("networkidle");

@@ -90,7 +90,7 @@ async function goToFirstPageList(page) {
 }
 test(" Student Addition @studentAdd @student", async ({ page }) => {
   await test.step("Go to Page and Click on Student Project", async () => {
-    await page.goto("http://localhost:9090/index.html");
+    await page.goto("/index.html");
     await page.getByText("Student Project").click();
     await page.waitForURL("**/studentTable/index.html");
   });

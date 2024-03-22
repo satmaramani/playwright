@@ -1,9 +1,8 @@
 const { test, expect } = require("@playwright/test");
 
 test.beforeEach(async ({ page }) => {
-  await page.goto("http://localhost:9090/index.html");
-  const selector =
-    'a:has-text("The Dropdown")[href="http://localhost:9090/dropdown/all.html"]';
+  await page.goto("/index.html");
+  const selector = 'a:has-text("The Dropdown")[href="/dropdown/all.html"]';
   await page.waitForSelector(selector, { visible: true });
   await page.click(selector);
   await page.waitForTimeout(1000);

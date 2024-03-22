@@ -1,7 +1,7 @@
 const { test, expect } = require("@playwright/test");
 
 test("Go to URL", async ({ page }) => {
-  await page.goto("http://localhost:9090/index.html");
+  await page.goto("/index.html");
   await page.locator("//a[normalize-space()='Forms - Personal']").click();
 });
 
@@ -14,7 +14,7 @@ test("Fill the form and submit @form @submit", async ({ page }) => {
   const desc = "I am full stack Developer and Test Automation Engineer";
   const city = "Mumbai";
 
-  await page.goto("http://localhost:9090/forms/person.html");
+  await page.goto("/forms/person.html");
 
   await page.locator("#firstName").fill(firstname);
   await page.locator("#lastName").fill(lastname);

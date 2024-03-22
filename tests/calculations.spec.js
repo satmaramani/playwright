@@ -2,9 +2,9 @@ const { test, expect } = require("@playwright/test");
 
 // Common setup steps for all test cases
 test.beforeEach(async ({ page }) => {
-  await page.goto("http://localhost:9090/index.html");
+  await page.goto("/index.html");
   const selector =
-    'a:has-text("Arithmetic Operations")[href="http://localhost:9090/calculation/operations.html"]';
+    'a:has-text("Arithmetic Operations")[href="/calculation/operations.html"]';
   await page.waitForSelector(selector, { visible: true });
   await page.click(selector);
   await page.waitForTimeout(1000);

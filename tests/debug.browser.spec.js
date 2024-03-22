@@ -31,7 +31,7 @@ test("Browser Debugging Test @debugBrowser", async () => {
   });
 
   // Navigate to a website
-  await page.goto("http://localhost:9090");
+  await page.goto("/index.html");
 
   // Perform some actions on the page
   await page.click("a");

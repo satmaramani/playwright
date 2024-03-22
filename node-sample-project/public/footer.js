@@ -29,18 +29,9 @@ document.addEventListener("DOMContentLoaded", function () {
   var message = document.createElement("p");
   var url = window.location.href;
 
-  message.innerHTML = "";
-  if (
-    url === "http://localhost:9090/index.html" ||
-    url === "http://localhost:9090/" ||
-    url === "http://localhost:9090"
-  ) {
-    message.innerHTML =
-      "Webpage created by <br><strong><h3>Sampurna Atmaramani</h3></strong><br />";
-  } else {
-    message.innerHTML =
-      'Webpage created by <br><strong><h3>Sampurna Atmaramani</h3></strong><br /><a href="/">Go to Home Page</a>';
-  }
+  message.innerHTML =
+    'Webpage created by <br><strong><h3>Sampurna Atmaramani</h3></strong><br /><a href="/index.html">Go to Home Page</a>';
+
   messageDiv.appendChild(message);
 
   // Append the header to the body

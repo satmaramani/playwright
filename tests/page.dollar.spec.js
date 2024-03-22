@@ -1,7 +1,7 @@
 const { test, expect, chromium } = require("@playwright/test");
 
 test(" Demo of Page.Dollar @page.singledollar ", async ({ page }) => {
-  await page.goto("http://localhost:9090/index.html");
+  await page.goto("/index.html");
   await page.waitForSelector(".dollar");
   const elementHandle = await page.$(".dollar");
   await elementHandle.click();
@@ -9,7 +9,7 @@ test(" Demo of Page.Dollar @page.singledollar ", async ({ page }) => {
 });
 
 test(" Demo of Page.Dollar @page.doubledollar1 ", async ({ page }) => {
-  await page.goto("http://localhost:9090/index.html");
+  await page.goto("/index.html");
   await page.waitForSelector(".dollar");
   const elementHandles = await page.$$(".dollar");
 
@@ -27,7 +27,7 @@ test(" Demo of Page.Dollar @page.doubledollar1 ", async ({ page }) => {
 });
 
 test(" Demo of Page.Dollar @page.doubledollar2 ", async ({ page }) => {
-  await page.goto("http://localhost:9090/index.html");
+  await page.goto("/index.html");
 
   await page.waitForLoadState();
   const elementHandles2 = await page.$$(".dollar");
@@ -50,7 +50,7 @@ test(" Demo of Page.Dollar @chaining ", async () => {
   page.setContent(
     'First <input type="text" name="username" placeholder="placeholder 1"><br/>Second <input type="text" name="username" placeholder="placeholder 2"><br/>Third <input type="text" name="username" placeholder="placeholder 3"><br/>Last<input type="text" name="username" placeholder="placeholder 4">'
   );
-  //   await page.goto("http://localhost:9090/index.html");
+  //   await page.goto("/index.html");
   // Locate the first input element and fill it
   const firstInput = page.locator('input[name="username"]').first();
   await firstInput.fill("This is first Element");

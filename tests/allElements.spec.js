@@ -1,7 +1,7 @@
 const { test, expect } = require("@playwright/test");
 
 test("All HTML Elements verification @someTag", async ({ page }) => {
-  await page.goto("http://localhost:9090/htmlElements/all.html");
+  await page.goto("/htmlElements/all.html");
 
   await page.waitForLoadState();
 
@@ -24,9 +24,7 @@ test("All HTML Elements verification @someTag", async ({ page }) => {
   await page.goBack();
   await page.waitForLoadState();
 
-  await expect(await page.url()).toBe(
-    "http://localhost:9090/htmlElements/all.html"
-  );
+  await expect(await page.url()).toBe("/htmlElements/all.html");
 
   await page.locator("#username").fill("TechySam");
   await page.locator("#password").fill("password123");
@@ -73,8 +71,7 @@ test("All HTML Elements verification @someTag", async ({ page }) => {
   page.evaluate(() => {
     document.getElementById("imageId").height = 150;
     document.getElementById("imageId").width = 150;
-    document.getElementById("imageId").src =
-      "http://localhost:9090/images/sam.jpg";
+    document.getElementById("imageId").src = "/images/sam.jpg";
   });
 
   await page.fill("#textarea", "New text content");
@@ -83,7 +80,7 @@ test("All HTML Elements verification @someTag", async ({ page }) => {
 
   await expect(await page.getByAltText("Placeholder Image")).toHaveAttribute(
     "src",
-    "http://localhost:9090/images/sam.jpg"
+    "/images/sam.jpg"
   );
 
   await page.locator("//td[normalize-space()='Row 1, Cell 1']").selectText();

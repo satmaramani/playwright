@@ -7,7 +7,7 @@ test("new window handling-when second window resource url is known @openNewWindo
 }) => {
   // Create window one object
   const pageOne = await context.newPage();
-  await pageOne.goto("http://localhost:9090/openPageNewWindow/sourcePage.html");
+  await pageOne.goto("/openPageNewWindow/sourcePage.html");
   //   await pageOne.locator('button[onclick="openInWindow()"]').click();
 
   // Start waiting for new page before clicking. Note no await.

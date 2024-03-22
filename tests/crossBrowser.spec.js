@@ -21,9 +21,7 @@ test("Dynamic transition from Chromium to WebKit", async ({}) => {
   });
 
   // Navigate to the page containing the button in Chromium
-  await chromiumPage.goto(
-    "http://localhost:9090/openPageNewWindow/sourcePage.html"
-  );
+  await chromiumPage.goto("/openPageNewWindow/sourcePage.html");
 
   // Click on the button to trigger the new window opening event
   await chromiumPage.click('button[onclick="openInWindow()"]');

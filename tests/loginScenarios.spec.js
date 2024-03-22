@@ -4,7 +4,7 @@ test.describe("Login Page @login", () => {
   let page;
 
   test.beforeEach(async ({ page }) => {
-    await page.goto("http://localhost:9090/loginScenario/login.html"); // Replace with your local server URL
+    await page.goto("/loginScenario/login.html"); // Replace with your local server URL
   });
 
   test("Correct login", async ({ page, context }) => {
@@ -12,9 +12,7 @@ test.describe("Login Page @login", () => {
     await page.fill("#password", "password1");
     await page.click('button[type="submit"]');
     await page.waitForTimeout(2000);
-    await expect(page).toHaveURL(
-      "http://localhost:9090/loginScenario/profile.html"
-    );
+    await expect(page).toHaveURL("/loginScenario/profile.html");
     const token = await page.evaluate(() => localStorage.getItem("token"));
     expect(token).toBeTruthy();
 
@@ -27,9 +25,7 @@ test.describe("Login Page @login", () => {
     await page.fill("#password", "password1");
     await page.click('button[type="submit"]');
     await page.waitForTimeout(2000);
-    await expect(page).toHaveURL(
-      "http://localhost:9090/loginScenario/login.html"
-    );
+    await expect(page).toHaveURL("/loginScenario/login.html");
     const token = await page.evaluate(() => localStorage.getItem("token"));
     expect(token).toBeNull();
 

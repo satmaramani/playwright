@@ -1,18 +1,17 @@
 const { test, expect } = require("@playwright/test");
 
 test.beforeEach("Start", async ({ page }) => {
-  // await page.goto("http://localhost:9090");
+  // await page.goto("/index.html");
   // const selector =
-  //   'a:has-text("The Tabs show")[href="http://localhost:9090/tab/all.html"]';
+  //   'a:has-text("The Tabs show")[href="/tab/all.html"]';
   // await page.waitForSelector(selector, { visible: true });
   // await page.click(selector);
   // await page.waitForTimeout(1000);
 });
 
 test("test Fast Tag tag1 @tab", async ({ page }) => {
-  await page.goto("http://localhost:9090");
-  const selector =
-    'a:has-text("The Tabs show")[href="http://localhost:9090/tab/all.html"]';
+  await page.goto("/index.html");
+  const selector = 'a:has-text("The Tabs show")[href="/tab/all.html"]';
   await page.waitForSelector(selector, { visible: true });
   await page.click(selector);
   await page.waitForTimeout(1000);

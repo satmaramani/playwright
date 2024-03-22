@@ -1,6 +1,5 @@
 // @ts-check
 const { defineConfig, devices } = require("@playwright/test");
-const { off } = require("process");
 
 /**
  * Read environment variables from file.
@@ -11,123 +10,72 @@ const { off } = require("process");
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
-const config = defineConfig({
-  quiet: true,
-  globalTeardown: "./SamTeardown.js",
-  globalSetup: "./samGlobalSetup.js",
-  testMatch: ["**/tests/**/*.spec.js"],
-  timeout: 30000,
-
-  globalTimeout: 60000, // 60 seconds
-  // grep: /tab2/,
-  // outputDir: "samOutPut",
-  testDir: "tests",
+module.exports = defineConfig({
+  // testDir: "./tests",
+  // testDir: "./tests-examples",
+  testDir: "./tests",
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
-  // forbidOnly: true,
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  // reporter: "html",//html, dot, list, json
   reporter: "html",
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
+    // baseURL: "http://localhost:9090",
+    baseURL: "https://playwright-sam.s3.ap-south-1.amazonaws.com",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    // trace: "on",
-    launchOptions: {
-      // slowMo: 500,
-    },
-    viewport: { width: 100, height: 100 },
-    // offline: true,
+    trace: "on-first-retry",
   },
-  expect: {
-    // Maximum time expect() should wait for the condition to be met.
-    timeout: 5000,
 
-    toHaveScreenshot: {
-      // An acceptable amount of pixels that could be different, unset by default.
-      maxDiffPixels: 10,
+  /* Configure projects for major browsers */
+  projects: [
+    {
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
     },
 
-    toMatchSnapshot: {
-      // An acceptable ratio of pixels that are different to the
-      // total amount of pixels, between 0 and 1.
-      maxDiffPixelRatio: 0.1,
+    {
+      name: "firefox",
+      use: { ...devices["Desktop Firefox"] },
     },
-  },
+
+    {
+      name: "webkit",
+      use: { ...devices["Desktop Safari"] },
+    },
+
+    /* Test against mobile viewports. */
+    // {
+    //   name: 'Mobile Chrome',
+    //   use: { ...devices['Pixel 5'] },
+    // },
+    // {
+    //   name: 'Mobile Safari',
+    //   use: { ...devices['iPhone 12'] },
+    // },
+
+    /* Test against branded browsers. */
+    // {
+    //   name: 'Microsoft Edge',
+    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
+    // },
+    // {
+    //   name: 'Google Chrome',
+    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+    // },
+  ],
+
+  /* Run your local dev server before starting the tests */
+  // webServer: {
+  //   command: 'npm run start',
+  //   url: 'http://127.0.0.1:3000',
+  //   reuseExistingServer: !process.env.CI,
+  // },
 });
-
-// Exporting projects array
-const projects = [
-  {
-    name: "smoke",
-    testMatch: /.*.spec.ts/,
-    retries: 0,
-  },
-  {
-    name: "prod",
-    testIgnore: /.*smoke.spec.ts/,
-    retries: 0,
-  },
-  {
-    name: "default",
-    testIgnore: /.*smoke.spec.ts/,
-    retries: 2,
-  },
-  {
-    name: "chromium",
-    use: {
-      repeatEach: 2,
-      browserName: "chromium",
-      trace: "on",
-    },
-  },
-  {
-    name: "firefox",
-    use: {
-      browserName: "firefox",
-      // Add other browser options or settings specific to Firefox
-    },
-  },
-  {
-    name: "webkit",
-    use: {
-      browserName: "webkit",
-      // Add other browser options or settings specific to WebKit
-    },
-  },
-];
-
-let webServerConfig;
-
-// if (!process.env.CI) {
-//   webServerConfig = {
-//     webServer: {
-//       name: "Frontend",
-//       command:
-//         "cd D:/playwright-samples/node-sample-project && nodemon server.js",
-//       url: "http://127.0.0.1:9090/node-sample-project/",
-//       reuseExistingServer: !process.env.CI,
-//     },
-//     backendServer: {
-//       name: "Backend server",
-//       command:
-//         "cd D:/playwright-samples/playwright-authentication && nodemon server.js",
-//       url: "http://127.0.0.1:9091",
-//       reuseExistingServer: !process.env.CI,
-//     },
-//   };
-// }
-
-module.exports = {
-  config,
-  projects,
-  // ...webServerConfig, // Spread the web server configuration into the exports object
-};

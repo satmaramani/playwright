@@ -1,7 +1,7 @@
 const { test, expect } = require("@playwright/test");
 
 test("Automate Child Windows @childWindows", async ({ page }) => {
-  await page.goto("http://localhost:9090/childWindows/allChildWindows.html");
+  await page.goto("/childWindows/allChildWindows.html");
   // Open Modal
   await page.click('button[onclick="openModal()"]');
   await page.waitForSelector("#myModal");

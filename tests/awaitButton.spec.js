@@ -8,7 +8,7 @@ test("Selector Wait for 5 seconds @awaitbutton @selectorawait", async () => {
   const page = await browser.newPage();
 
   // Navigate to the HTML page
-  await page.goto("http://localhost:9090/delay/button.html");
+  await page.goto("/delay/button.html");
 
   const buttonLocator = page.locator("#delayed-button");
   let isVisible = await buttonLocator.isVisible();

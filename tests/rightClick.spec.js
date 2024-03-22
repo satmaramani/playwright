@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test("Simulate Click Events @rightclick @rightClick", async ({ page }) => {
   // Navigate to the Click Event HTML page
-  await page.goto("http://localhost:9090/events/rightClick.html");
+  await page.goto("/events/rightClick.html");
 
   // Simulate a right-click event
   await page.mouse.click(100, 100, { button: "right" });

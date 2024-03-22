@@ -3,7 +3,7 @@ import { chromium, test, expect } from "@playwright/test";
 
 test("Dismiss JavaScript Alert Box @dismiss @dialog", async ({ page }) => {
   // Navigate to a page with a JavaScript alert
-  await page.goto("http://localhost:9090/dialog/dismiss.html");
+  await page.goto("/dialog/dismiss.html");
 
   // Listen for dialog events
   page.on("dialog", async (dialog) => {
