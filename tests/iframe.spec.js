@@ -5,6 +5,20 @@ test("Verify calculator operations in iframe @iframe", async ({ page }) => {
   // Navigate to the parent page containing the iframe
   await page.goto("/frames/frames.html");
 
+  await page.waitForLoadState();
+
+  // Get an array of frame objects
+  const frames = page.frames();
+
+  // Extract frame names
+  const frameNames = frames.map((frame) => frame.name());
+
+  // Extract frame URLs
+  const frameURLs = frames.map((frame) => frame.url());
+
+  console.log("Frame Names:", frameNames);
+  console.log("Frame URLs:", frameURLs);
+
   // Access the iframe element
   const iframeElement2 = await page.$("#iframe2");
 

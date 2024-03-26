@@ -9,9 +9,9 @@ test("example using custom fixture @axeSampleTestGoogle", async ({
   await page.goto("https://google.com/");
   await page.waitForLoadState("domcontentloaded");
 
+  console.log(page);
   const results = await makeAxeBuilder().analyze();
-  //   console.log(results);
-
+  console.log(results);
   const reportHTML = createHtmlReport({
     results,
     options: {
@@ -27,31 +27,31 @@ test("example using custom fixture @axeSampleTestGoogle", async ({
   }
   fs.writeFileSync(fileName, reportHTML);
 
-  //   expect(accessibilityScanResults.violations).toEqual([]);
+  expect(accessibilityScanResults.violations).toEqual([]);
 });
 
-test("example using custom fixture @axeSampleTestPlaywright", async ({
-  page,
-  makeAxeBuilder,
-}) => {
-  await page.goto("https://playwright.dev/");
-  await page.waitForLoadState("domcontentloaded");
+// test("example using custom fixture @axeSampleTestPlaywright", async ({
+//   page,
+//   makeAxeBuilder,
+// }) => {
+//   await page.goto("https://playwright.dev/");
+//   await page.waitForLoadState("domcontentloaded");
 
-  const results = await makeAxeBuilder().analyze();
-  //   console.log(results);
+//   const results = await makeAxeBuilder().analyze();
+//   //   console.log(results);
 
-  const reportHTML = createHtmlReport({
-    results,
-    options: {
-      projectKey: "Playwright",
-    },
-  });
+//   const reportHTML = createHtmlReport({
+//     results,
+//     options: {
+//       projectKey: "Playwright",
+//     },
+//   });
 
-  const fileName = "build/reports/accessibility-report-playwrightDev.html";
-  if (!fs.existsSync(fileName)) {
-    fs.mkdirSync("build/reports", {
-      recursive: true,
-    });
-  }
-  fs.writeFileSync(fileName, reportHTML);
-});
+//   const fileName = "build/reports/accessibility-report-playwrightDev.html";
+//   if (!fs.existsSync(fileName)) {
+//     fs.mkdirSync("build/reports", {
+//       recursive: true,
+//     });
+//   }
+//   fs.writeFileSync(fileName, reportHTML);
+// });

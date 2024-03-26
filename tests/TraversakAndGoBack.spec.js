@@ -51,6 +51,7 @@ test("Go back and go Forward @goback @traversal", async () => {
   await page.goForward();
   await page.waitForURL("**/page2.html");
 
+  await page.reload();
   console.log(
     `Done with transitions => I am on page => ${page.url} - not going anywhere !!`
   );
