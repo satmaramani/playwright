@@ -4,14 +4,14 @@ export class CalculationPage {
     this.num1Locator = this.page.locator("#num1");
     this.num2Locator = this.page.locator("#num2");
     this.addButton = page.locator(".add");
-    this.outputArea = page.locator("#output");
     this.outputId = "#output";
+    this.outputArea = page.locator(this.outputId);
     this.subtractButton = page.locator(".subtract");
     this.multiplyButton = page.locator(".multiply");
     this.divideButton = page.locator(".divide");
-    this.url = "http://localhost:9090/index.html";
+    this.url = "https://playwright-sam.s3.ap-south-1.amazonaws.com/index.html";
     this.arithmaticUrlSelector =
-      'a:has-text("Arithmetic Operations")[href="http://localhost:9090/calculation/operations.html"]';
+      'a:has-text("Arithmetic Operations")[href="https://playwright-sam.s3.ap-south-1.amazonaws.com/calculation/operations.html"]';
   }
 
   async doAddition(num1, num2) {

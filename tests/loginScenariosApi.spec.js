@@ -19,10 +19,12 @@ test("Login API Test @loginApiMethodPass", async ({ page }) => {
     // Successful login
     console.log("Login successful. Token:", response.token);
     expect(response.token).toBeTruthy();
+  } else {
+    expect(false).toBeTruthy();
   }
 });
 
-test("Restricted page without token @loginApiMethodRestricted", async ({
+test("Restricted page without token - should Fail @loginApiMethodRestricted", async ({
   page,
 }) => {
   // Define the API URL and JSON data
@@ -119,7 +121,7 @@ test("Restricted page with token @loginApiMethodRestrictedFail", async ({
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `${actualToken}Ganesh`,
+        Authorization: `${actualToken}`,
       },
     }).then((response) => response.json());
 
@@ -135,7 +137,7 @@ test("Restricted page with token @loginApiMethodRestrictedFail", async ({
 test("Login API Test @loginApiMethodFail", async ({ page }) => {
   // Define the API URL and JSON data
   const apiUrl = "http://localhost:9091/login";
-  const jsonData = { username: "user123", password: "password1" };
+  const jsonData = { username: "user123424", password: "password1" };
 
   // Make a POST request to the login API
   const response = await page.evaluate(
@@ -156,5 +158,7 @@ test("Login API Test @loginApiMethodFail", async ({ page }) => {
     // Invalid username or password
     console.error("Login failed:", response.error);
     expect(response.error).toBe("Invalid username or password");
+  } else {
+    console.log(response);
   }
 });

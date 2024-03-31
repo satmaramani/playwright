@@ -34,6 +34,8 @@ test("Re login using storage State and validate @storageState2", async () => {
     console.log(response);
   }
 
+  //save complete information on storage.json file so that you can reuse in other browser context
+  await context.storageState({ path: "storage30032024.json" });
   // Perform actions on the restricted page, such as verifying authentication
 
   await browser.close();

@@ -61,9 +61,23 @@ test("Re login using storage State and validate @storageState", async () => {
   );
   await context.addCookies(storageStateData.cookies);
 
+  const token = storageStateData.cookies[0].value;
   // Navigate to restricted endpoint
   const page = await context.newPage();
-  await page.goto("http://localhost:9091/restricted1");
+  // Define the API URL and JSON data
+  const apiUrl = "http://localhost:9091/restricted1";
+
+  // Make a POST request to the login API
+  const response = await fetch(apiUrl, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${token}`,
+    },
+  }).then((response) => response.json());
+
+  console.log("Actual Token is =>", token);
+  console.log("response from server is => ", response);
 
   await browser.close();
 });

@@ -19,10 +19,12 @@ test("Handle confirm dialog @confirm @confirmBox @confirmAlertBox", async () => 
         console.log("Message is correct !!");
         await dialog.accept(); // Click "OK"
       } else {
+        await page.waitForTimeout(2000);
         console.log(
           "Message is wrong !!, it should have been ",
           dialog.message()
         );
+        await page.waitForTimeout(2000);
         await dialog.dismiss(); // Click "Cancel"
       }
     });
@@ -32,7 +34,7 @@ test("Handle confirm dialog @confirm @confirmBox @confirmAlertBox", async () => 
 
     // Trigger an action that triggers the confirm dialog, for example:
     await page.evaluate(() => {
-      window.confirm("Are you sure?");
+      window.confirm("ACBCD ");
     });
 
     // Other test logic...

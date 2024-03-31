@@ -17,6 +17,7 @@ test("Drag & Drop example @drag @drop @dragAndDrop", async ({ page }) => {
 
   // Perform drag and drop action
   await page.locator("#dragElement").dragTo(page.locator("#dropTarget"));
+  // await dragElement.dragTo(dropTarget);
   //   await dragElement.dragAndDrop(dropTarget);
 
   // Verify if drop target text is updated

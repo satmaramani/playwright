@@ -29,11 +29,24 @@ test("API response with mocking @mock", async ({ page }) => {
   // Define the URL of the API endpoint to mock
   const apiUrl = "https://reqres.in/api/users/2";
 
+  // Extract the mocked response data using page.evaluate
+  const preMockedResponseData = await page.evaluate(() => {
+    // Make the API request and return the response data
+    return fetch("https://reqres.in/api/users/2")
+      .then((response) => response.json())
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        return null;
+      });
+  });
+
+  console.log("Before mocking API response: => ", preMockedResponseData);
+
   // Define the mocked response data
   const mockedResponse = {
     data: {
-      id: 2,
-      email: "sam@example.com",
+      id: 20032024,
+      email: "sam@techysam.com",
       first_name: "Sam",
       last_name: "Atmaramani",
       avatar: "https://reqres.in/img/faces/2-image.jpg",
@@ -55,7 +68,6 @@ test("API response with mocking @mock", async ({ page }) => {
   // Wait for the API request to complete
   await page.waitForLoadState("networkidle");
 
-  // Extract the mocked response data using page.evaluate
   const mockedResponseData = await page.evaluate(() => {
     // Make the API request and return the response data
     return fetch("https://reqres.in/api/users/2")
@@ -65,8 +77,7 @@ test("API response with mocking @mock", async ({ page }) => {
         return null;
       });
   });
-
-  console.log("Mocked API response:", mockedResponseData);
+  console.log("After mocking API response: =>  ", mockedResponseData);
 
   // Perform assertions or validations on the mocked response data
   // For example, you can check if the response data matches the mocked data

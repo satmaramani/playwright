@@ -19,6 +19,7 @@ test("@download @upload Upload file", async ({ page }) => {
 
   // Set the value of the file input to the file path
   await page.setInputFiles(fileInputSelector, filePath);
+  // await page.setInputFiles("input[type=file]", "D:/Downloaders/Sam employee_list.txt");
 
   await page.locator("//button[@onclick='uploadFile()']").click();
 

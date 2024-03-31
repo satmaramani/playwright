@@ -1,11 +1,17 @@
-const { test } = require("@playwright/test");
+const { test, expect } = require("@playwright/test");
 
-test("Take Google page screenshot @screenshot", async ({ page }) => {
-  await page.goto("https://google.com");
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = date.getUTCMonth();
-  const day = date.getDay();
+test.describe("Take and Match screenshots @screenshot", async () => {
+  test("Take Google page screenshot @screenshot", async ({ page }) => {
+    await page.goto("https://google.com");
+    await page.screenshot({ path: "google.png" });
 
-  await page.screenshot({ path: `google_${year}-${month}-${day}.png` });
+    await expect(page).toHaveScreenshot();
+  });
+
+  test("Match Google page screenshot @matchscreenshot", async ({ page }) => {
+    await page.goto("https://google.com");
+    expect(await page.screenshot()).toMatchSnapshot({
+      name: "google.png",
+    });
+  });
 });

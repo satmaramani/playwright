@@ -30,23 +30,44 @@ test("Actual Context Storage state @loginContextStorageState", async () => {
   await newContext.addCookies(storageState.cookies);
   const newPage = await newContext.newPage();
 
-  // Access restricted API endpoint
-  const restrictedResponse = await newPage.evaluate(() => {
-    return fetch("http://localhost:9091/restricted", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        // Add any necessary headers, such as authorization header with token
-      },
-    });
-  });
-
-  // Get JSON response from restricted endpoint
-  const restrictedData = await restrictedResponse.json();
-  console.log(restrictedData);
+  const response1 = await fetch("http://localhost:9091/restricted1", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${storageStateData.cookies[0].value}`,
+    },
+  }).then((response) => response.json());
+  console.log(response1);
   // Verify authentication
   const isAuthenticated = await newPage.innerText("body");
   console.log(isAuthenticated);
 
   await browser.close();
+});
+
+// test.use({ storageState: "storage.json" });
+test("direct call using browser Storage", async () => {
+  const browser = await chromium.launch();
+  // Restore storage state in a new context
+  const newContext = await browser.newContext();
+  // await newContext.addCookies(storageState.cookies);
+  const newPage = await newContext.newPage();
+
+  await newPage.context().storageState({ path: "storage.json" });
+
+  // Access restricted API endpoint
+  const response = await fetch("http://localhost:9091/restricted1", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      // Authorization: `${storageStateData.cookies[0].value}`,
+    },
+  }).then((response) => response.json());
+
+  // Get JSON response from restricted endpoint
+  // const restrictedData = await restrictedResponse.json();
+  console.log(response);
+  // Verify authentication
+  const isAuthenticated = await newPage.innerText("body");
+  console.log(isAuthenticated);
 });

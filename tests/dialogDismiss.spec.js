@@ -18,6 +18,6 @@ test("Dismiss JavaScript Alert Box @dismiss @dialog", async ({ page }) => {
     await dialog.dismiss();
   });
 
-  await page.locator("#textbox").fill("Dummy text");
+  await page.locator("#textbox").fill("During Training Now march 2024 ");
   await page.locator("#submit").click();
 });

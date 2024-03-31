@@ -8,6 +8,7 @@ test.describe("Playwright Homepage @accessibility", () => {
     await page.goto("https://playwright.dev");
 
     const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+    expect(accessibilityScanResults.violations).toEqual([]);
 
     const reportHTML = createHtmlReport({
       results: accessibilityScanResults,
@@ -22,7 +23,5 @@ test.describe("Playwright Homepage @accessibility", () => {
       });
     }
     fs.writeFileSync("build/reports/accessibility-report.html", reportHTML);
-
-    expect(accessibilityScanResults.violations).toEqual([]);
   });
 });
