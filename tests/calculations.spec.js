@@ -41,3 +41,11 @@ test("@division  @calculations  Division", async ({ page }) => {
   await page.waitForSelector("#output");
   expect(await page.locator("#output").innerText()).toBe("2");
 });
+
+test("dummy", async ({ page }) => {
+  await page.locator("#num1").fill("10");
+  await page.locator("#num2").fill("5");
+  await page.locator(".divide").click();
+  await page.waitForSelector("#output");
+  expect(await page.locator("#output").innerText()).toBe("2");
+});
