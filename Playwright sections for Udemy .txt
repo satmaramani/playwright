@@ -1,0 +1,129 @@
+Playwright sections 
+
+	Introduction 
+	Installation 
+
+	*What are different web Elements
+
+	Core Concepts of automation 
+	Page Locators and Selectors 
+	Assertions in Playwright 
+	Playwright Basic methods for Web automation testing
+	Handling UI components  (Dropdown, text box etc) & interaction with Web Elements 
+	
+	
+	Test case structure 
+		
+		test 
+		Describe
+		multiple groups 
+		test.step
+		async function 
+
+	Tagging & annotations
+		run single test case
+		run multiple test cases 
+		
+		test.only
+		test.skip
+		test.describe
+		test.fixme
+		
+	PlayWright API's for doing various things like 
+		fill
+		click
+		selectDropdown
+		And all other stuffs 
+		
+
+	Navigation 
+		goto
+		reload
+		goBack
+		goForward
+	
+
+	Advanced techniques and Intearactions 
+		File uploads
+		downloads
+		drag / drop 
+
+	Assertions 
+		expect
+
+	Pages / windows
+		dialog box 
+		alert box
+		prompt
+		new window
+		new page etc 
+
+	Working with Frames / Iframes 
+
+	API testing mocking / login / storage state 
+
+	Page object model
+		simple steps 
+		having all objects classes in one file and include that file only 
+
+	Accessibility
+		
+		Axe 
+		JSON reporting
+		Axe core HTML Reporting
+		assersions for accessibility 	
+
+	Visual testing 
+		Waht is visual testing
+		saving screenshots 	
+		comparing next time
+
+	Github actions 
+		Create new workflow
+		why github actions is required 
+		execute it real time
+		show all possible events and demo 
+			on workflow dispatch
+			push
+			pull
+			multi strategy like push, pull Or workflow dispatch 
+			cron / background process 
+
+	Debugging / tracing
+		
+		logging using console log 
+		--debug
+		--inspect 
+		try catch 
+		
+		env variables debugging 
+		trace on
+		
+		
+		retries
+
+		*Parameterization 
+
+	Configuration section 
+
+	Practical Samples HTML Code Demo 
+		Personal Form
+		dropdown
+
+
+	Complete project 
+		Employee add
+		Employee list
+		Pagination 
+		Search employee
+		Reset search 
+		Go back to home page 
+		Remove the employee 	
+		Display the alert box 
+
+	Playwright with Jest / Mocha and Jasmin
+
+
+	
+	
+	
