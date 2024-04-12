@@ -2,8 +2,21 @@ Playwright sections
 
 	Introduction 
 	Installation 
+		Through npm init -y 
+		npm install playwright 
+		
+		Through npm init playwright@latest => Installs everything 
 
-	*What are different web Elements
+	What are different web Elements
+		text contents
+		form controls
+		multimedia 
+		Lists 
+		Tables 
+		Interactive elements
+		Structural elements
+		
+		
 
 	Core Concepts of automation 
 	Page Locators and Selectors 
@@ -24,10 +37,12 @@ Playwright sections
 		run single test case
 		run multiple test cases 
 		
-		test.only
-		test.skip
-		test.describe
-		test.fixme
+		*test.only
+		*test.skip
+		*test.describe
+		*test.fixme
+
+	Various timeOut 
 		
 	PlayWright API's for doing various things like 
 		fill
@@ -103,13 +118,19 @@ Playwright sections
 		retries
 
 		*Parameterization 
+		* How to use Environment variables / files in playwright 
 
+	Timeouts 
+		https://playwright.dev/docs/test-timeouts
 	Configuration section 
 
 	Practical Samples HTML Code Demo 
 		Personal Form
 		dropdown
 
+	*Command line for running tests 
+		https://playwright.dev/docs/test-cli
+		Ui mode => https://playwright.dev/docs/test-ui-mode
 
 	Complete project 
 		Employee add
