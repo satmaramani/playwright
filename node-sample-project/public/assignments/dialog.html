@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Dialog Assignment -Techysam</title>
+</head>
+<body>
+    <button onclick="confirmAction()">Click Me</button>
+
+    <script>
+        function confirmAction() {
+            const confirmed = confirm('Are you sure you want to proceed?');
+            if (confirmed) {
+                alert('Confirmed!');
+            } else {
+                alert('Cancelled!');
+            }
+        }
+    </script>
+</body>
+</html>
